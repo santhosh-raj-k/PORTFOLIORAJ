@@ -1,95 +1,184 @@
-// ===== Mobile side drawer =====
-const menuBtn = document.getElementById("menuBtn");
-const menuClose = document.getElementById("menuClose");
-const navLinks = document.getElementById("navLinks");
-const navOverlay = document.getElementById("navOverlay");
 
-function setMenu(open) {
-  navLinks.classList.toggle("open", open);
-  navOverlay.classList.toggle("open", open);
-  menuBtn.setAttribute("aria-expanded", String(open));
-  document.documentElement.style.overflow = open ? "hidden" : "";
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // ==========================================
+  // 1. MOBILE SIDE NAVIGATION
+  // ==========================================
 
-menuBtn.addEventListener("click", () => setMenu(true));
-menuClose.addEventListener("click", () => setMenu(false));
-navOverlay.addEventListener("click", () => setMenu(false));
+  const menuBtn = document.getElementById("menuBtn");
+  const menuClose = document.getElementById("menuClose");
+  const navLinks = document.getElementById("navLinks");
+  const navOverlay = document.getElementById("navOverlay");
 
-// Mobile-la link click pannumbodhu drawer close aagum
-navLinks.querySelectorAll("a").forEach((link) =>
-  link.addEventListener("click", () => setMenu(false))
-);
+  function setMenu(open) {
+    if (!menuBtn || !navLinks || !navOverlay) return;
 
-// 1024px breakpoint-ah cross pannum pothu mattum close pannum
-window
-  .matchMedia("(min-width: 1024px)")
-  .addEventListener("change", () => setMenu(false));
+    navLinks.classList.toggle("open", open);
+    navOverlay.classList.toggle("open", open);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") setMenu(false);
-});
+    menuBtn.setAttribute("aria-expanded", String(open));
+    navOverlay.setAttribute("aria-hidden", String(!open));
 
-// Page full-ah load aana appuram, rendu frame kazhichu dhan transition on aagum
-window.addEventListener("click", () => {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      document.body.classList.add("nav-ready");
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }
+
+  if (menuBtn && menuClose && navLinks && navOverlay) {
+    // Open menu
+    menuBtn.addEventListener("click", () => {
+      setMenu(true);
     });
-  });
-});
 
-// ===== Seamless skills marquee =====
-const track = document.getElementById("skillTrack");
+    // Close menu
+    menuClose.addEventListener("click", () => {
+      setMenu(false);
+    });
 
-[...track.children].forEach((el) => {
-  const clone = el.cloneNode(true);
-  clone.setAttribute("aria-hidden", "true");
-  clone.querySelector("img").alt = "";
-  track.appendChild(clone);
-});
+    // Close when clicking outside the drawer
+    navOverlay.addEventListener("click", () => {
+      setMenu(false);
+    });
 
-// Marquee screen-ku veliya irundha pause aagum
-new IntersectionObserver(([entry]) => {
-  track.style.animationPlayState = entry.isIntersecting ? "" : "paused";
-}).observe(track);
+    // Close when clicking any navigation link
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        setMenu(false);
+      });
+    });
 
-// ===== Active nav link highlight =====
-const navAnchors = [...navLinks.querySelectorAll("a.nav-a")];
+    // Close with Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setMenu(false);
+      }
+    });
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navAnchors.forEach((a) => a.removeAttribute("aria-current"));
-      const match = navAnchors.find(
-        (a) => a.getAttribute("href") === "#" + entry.target.id
+    // Close when switching to desktop layout
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+
+    desktopQuery.addEventListener("change", (event) => {
+      if (event.matches) {
+        setMenu(false);
+      }
+    });
+
+    // Ensure the menu starts closed
+    setMenu(false);
+  }
+
+  // ==========================================
+  // 2. SEAMLESS SKILLS MARQUEE
+  // ==========================================
+
+  const track = document.getElementById("skillTrack");
+
+  if (track && !track.dataset.cloned) {
+    const originalSkills = Array.from(track.children);
+
+    originalSkills.forEach((skill) => {
+      const clone = skill.cloneNode(true);
+
+      // Hide duplicate items from screen readers
+      clone.setAttribute("aria-hidden", "true");
+
+      // Decorative duplicate images should have empty alt text
+      const image = clone.querySelector("img");
+
+      if (image) {
+        image.alt = "";
+      }
+
+      track.appendChild(clone);
+    });
+
+    // Prevent duplicate cloning
+    track.dataset.cloned = "true";
+  }
+
+  // ==========================================
+  // 3. PAUSE MARQUEE OUTSIDE VIEWPORT
+  // ==========================================
+
+  if (track && "IntersectionObserver" in window) {
+    const marqueeObserver = new IntersectionObserver(([entry]) => {
+      track.style.animationPlayState = entry.isIntersecting
+        ? "running"
+        : "paused";
+    });
+
+    marqueeObserver.observe(track);
+  }
+
+  // ==========================================
+  // 4. ACTIVE NAVIGATION LINK HIGHLIGHT
+  // ==========================================
+
+  const navAnchors = Array.from(
+    document.querySelectorAll("#navLinks a.nav-a")
+  );
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          navAnchors.forEach((anchor) => {
+            anchor.removeAttribute("aria-current");
+          });
+
+          const activeLink = navAnchors.find((anchor) => {
+            return (
+              anchor.getAttribute("href") === `#${entry.target.id}`
+            );
+          });
+
+          if (activeLink) {
+            activeLink.setAttribute("aria-current", "true");
+          }
+        });
+      },
+      {
+        rootMargin: "-40% 0px -55% 0px",
+      }
+    );
+
+    document.querySelectorAll("section[id]").forEach((section) => {
+      sectionObserver.observe(section);
+    });
+  }
+
+  // ==========================================
+  // 5. CONTACT FORM - OPEN DEFAULT MAIL APP
+  // ==========================================
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+      const subjectInput = document.getElementById("subject");
+
+      const name = nameInput?.value.trim() || "";
+      const email = emailInput?.value.trim() || "";
+      const message = messageInput?.value.trim() || "";
+      const customSubject = subjectInput?.value.trim() || "";
+
+      const subject = encodeURIComponent(
+        customSubject || `Portfolio contact from ${name}`
       );
-      if (match) match.setAttribute("aria-current", "true");
+
+      const body = encodeURIComponent(
+        `${message}\n\nFrom: ${name} (${email})`
+      );
+
+      const mailtoURL =
+        `mailto:santhoshkathirkk@gmail.com` +
+        `?subject=${subject}&body=${body}`;
+
+      window.location.href = mailtoURL;
     });
-  },
-  { rootMargin: "-40% 0px -55% 0px" }
-);
-
-document.querySelectorAll("section[id]").forEach((section) => {
-  sectionObserver.observe(section);
-});
-
-// ===== Contact form -> mail app =====
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-  const customSubject = document.getElementById("subject").value.trim();
-
-  const subject = encodeURIComponent(
-    customSubject || "Portfolio contact from " + name
-  );
-  const body = encodeURIComponent(
-    message + "\n\nFrom: " + name + " (" + email + ")"
-  );
-
-  location.href =
-    "mailto:santhoshkathirkk@gmail.com?subject=" + subject + "&body=" + body;
+  }
 });
