@@ -1995,3 +1995,131 @@ textarea.field {
   color: #fff;
   transform: translateY(-2px);
 }
+
+/* ===== RESPONSIVE HOME SECTION FIX ===== */
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+}
+
+.hero-text {
+  text-align: left;
+  min-width: 0;
+}
+
+.hero-name {
+  font-size: clamp(24px, 4vw, 44px);
+  overflow-wrap: anywhere;
+}
+
+.hero-photo {
+  order: 0;
+  height: auto;
+  min-height: 240px;
+}
+
+.hero-right {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 32px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+
+  .hero-photo {
+    grid-row: 1;
+    min-height: 210px;
+  }
+
+  .hero-text {
+    grid-row: 2;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+
+  .hero-desc {
+    margin: 0 auto 20px;
+  }
+
+  .btn-row,
+  .social-row {
+    justify-content: center;
+  }
+
+  .hero-right {
+    grid-column: auto;
+    padding: 12px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .hero-text {
+    text-align: left;
+  }
+
+  .hero-photo {
+    grid-row: auto;
+  }
+
+  .hero-right {
+    grid-column: 1 / -1;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ===== LAPTOP AND DESKTOP ===== */
+@media (min-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: 40px;
+    gap: 32px;
+  }
+
+  .hero-text {
+    text-align: left;
+  }
+
+  .hero-right {
+    grid-column: 1 / -1;
+  }
+
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 48px;
+  }
+}
