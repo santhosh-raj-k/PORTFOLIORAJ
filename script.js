@@ -20,14 +20,22 @@ navLinks.querySelectorAll("a").forEach((link) =>
   link.addEventListener("click", () => setMenu(false))
 );
 
-// Desktop breakpoint-ah cross pannum pothu mattum close pannum
-// (mobile address bar resize-ku close aagaadhu)
+// 1024px breakpoint-ah cross pannum pothu mattum close pannum
 window
-  .matchMedia("(min-width: 768px)")
+  .matchMedia("(min-width: 1024px)")
   .addEventListener("change", () => setMenu(false));
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") setMenu(false);
+});
+
+// Page full-ah load aana appuram, rendu frame kazhichu dhan transition on aagum
+window.addEventListener("click", () => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.add("nav-ready");
+    });
+  });
 });
 
 // ===== Seamless skills marquee =====
