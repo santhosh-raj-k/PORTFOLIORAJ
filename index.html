@@ -1,144 +1,62 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SANTHOSHRAJ | Full Stack Developer</title>
-    <meta
-      name="description"
-      content="Santhoshraj - Full Stack Developer portfolio"
-    />
+    <meta name="description" content="Santhoshraj - Full Stack Developer portfolio" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Poppins: render-block aagaama load aagum -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
+
+    <!-- Font Awesome: render-block aagaama load aagum -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      />
+    </noscript>
 
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Poppins", "system-ui", "-apple-system", "sans-serif"],
-            },
-            colors: {
-              brand: { DEFAULT: "#4f46e5", dark: "#3730a3" },
-              navy: "#111833",
-              ink: "#0f172a",
-              soft: "#f5f7ff",
-              line: "#e5e7f5",
-            },
-            keyframes: {
-              marquee: {
-                from: { transform: "translate3d(0,0,0)" },
-                to: { transform: "translate3d(-50%,0,0)" },
-              },
-              blob: {
-                "0%,100%": {
-                  transform: "translate(-50%,-50%) rotate(0deg) scale(1)",
-                },
-                "50%": {
-                  transform: "translate(-50%,-50%) rotate(12deg) scale(1.05)",
-                },
-              },
-            },
-            animation: {
-              marquee: "marquee 28s linear infinite",
-              blob: "blob 9s ease-in-out infinite",
-            },
-          },
-        },
-      };
-    </script>
-
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      body {
-        overflow-x: clip;
-      }
-      section,
-      header,
-      footer {
-        width: 100%;
-      }
-    </style>
-
-    <style type="text/tailwindcss">
-      @layer components {
-        .nav-a {
-          @apply flex items-center gap-2 px-4 py-3 text-sm font-medium text-slate-700 rounded-xl
-                 transition-all duration-200
-                 hover:text-brand hover:bg-white hover:shadow-lg hover:shadow-brand/20 hover:-translate-y-0.5
-                 aria-[current=true]:text-brand aria-[current=true]:bg-indigo-50 aria-[current=true]:shadow-md aria-[current=true]:shadow-brand/10;
-        }
-        .nav-a i {
-          @apply text-[14px] text-brand/80 w-4 text-center;
-        }
-        .skill {
-          @apply shrink-0 w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] mr-4 bg-white border border-line rounded-2xl px-2 py-4 flex flex-col items-center justify-center gap-3 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10 hover:border-indigo-200;
-        }
-        .skill img {
-          @apply w-[52px] h-[52px] object-contain;
-        }
-        .skill span {
-          @apply text-[13px] font-semibold text-slate-800 whitespace-nowrap;
-        }
-        .field {
-          @apply w-full px-4 py-3.5 border border-slate-200 rounded-[10px] text-sm bg-white text-ink transition focus:outline-none focus:border-brand focus:ring-4 focus:ring-brand/10;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body
-    class="font-sans text-ink bg-white leading-relaxed antialiased overflow-x-clip pt-16 md:pt-[72px]"
-  >
+  <body>
     <!-- ================= NAVBAR ================= -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white border-b border-line">
-      <div
-        class="w-full px-5 sm:px-[30px] h-16 md:h-[72px] flex items-center justify-between"
-      >
-        <a
-          href="#home"
-          class="text-xl sm:text-[22px] font-extrabold tracking-tight uppercase"
-          >Santhosh<span class="text-brand">raj</span></a
-        >
+    <header class="site-header">
+      <div class="nav-bar">
+        <a href="#home" class="logo">Santhosh<span class="accent">raj</span></a>
 
-        <button
-          id="menuBtn"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          class="md:hidden text-[22px] text-ink p-2"
-        >
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
 
         <!-- overlay (small screens) -->
-        <div
-          id="navOverlay"
-          class="md:hidden fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-none"
-          aria-hidden="true"
-        ></div>
+        <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
 
         <!-- side drawer on small screens, normal row on md+ -->
-        <ul
-          id="navLinks"
-          class="fixed md:static top-0 right-0 h-screen md:h-auto w-72 max-w-[80%] md:w-auto flex flex-col md:flex-row bg-white md:bg-transparent shadow-2xl md:shadow-none pt-20 md:pt-0 px-3 md:px-0 gap-1 md:gap-2 translate-x-full md:translate-x-0 invisible md:visible transition-none"
-        >
-          <li class="absolute top-4 right-4 md:hidden">
-            <button id="menuClose" aria-label="Close menu" class="text-[22px] text-ink p-2 rounded-xl hover:bg-indigo-50 hover:text-brand transition">
+        <ul id="navLinks" class="nav-links">
+          <li class="nav-close-item">
+            <button id="menuClose" class="nav-close" aria-label="Close menu">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </li>
@@ -155,443 +73,208 @@
 
     <main>
       <!-- ================= HERO ================= -->
-      <section
-        id="home"
-        class="bg-gradient-to-b from-[#f7f8ff] to-white overflow-hidden scroll-mt-20"
-      >
-        <div
-          class="w-full px-5 sm:px-[30px] py-6 md:py-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-4 md:gap-6 xl:gap-[30px]"
-        >
+      <section id="home" class="hero">
+        <div class="hero-inner">
           <!-- left -->
-          <div class="text-center md:text-left">
-            <h3 class="text-[19px] sm:text-[22px] font-normal text-slate-700">
-              Hi, I'm
-            </h3>
-            <h1
-              class="uppercase font-extrabold leading-[1.05] tracking-tight text-navy text-[length:clamp(28px,9.5vw,40px)]"
-            >
-              Santhosh<span class="text-brand">raj</span>
-            </h1>
-            <p
-              class="text-xl sm:text-[26px] font-semibold text-navy mt-1.5 mb-3.5"
-            >
-              A <span class="text-brand">Full Stack Developer</span>
-            </p>
-            <p
-              class="text-base text-slate-600 max-w-[380px] mx-auto md:mx-0 mb-6"
-            >
+          <div class="hero-text">
+            <p class="hi">Hi, I'm</p>
+            <h1 class="hero-name">Santhosh<span class="accent">raj</span></h1>
+            <p class="hero-role">A <span class="accent">Full Stack Developer</span></p>
+            <p class="hero-desc">
               I build modern, responsive and user-friendly web applications
               using HTML, CSS, JavaScript, React, Node.js and MongoDB.
             </p>
 
-            <div
-              class="flex flex-wrap justify-center md:justify-start gap-3.5 mb-6"
-            >
-              <a
-                href="#projects"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-[1.5px] border-brand bg-brand text-white shadow-lg shadow-brand/25 transition hover:bg-brand-dark hover:-translate-y-0.5"
-                >View My Projects <i class="fa-solid fa-arrow-right"></i
-              ></a>
-              <a
-                href="#contact"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-[1.5px] border-brand bg-white text-brand transition hover:bg-brand hover:text-white hover:-translate-y-0.5"
-                >Contact Me</a
-              >
+            <div class="btn-row">
+              <a href="#projects" class="btn btn-primary">View My Projects <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
 
-            <div class="flex justify-center md:justify-start gap-[18px] text-[22px]">
-              <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-brands fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
-                class="text-[#0a66c2] transition hover:-translate-y-[3px]"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
-                class="text-[#e1306c] transition hover:-translate-y-[3px]"><i class="fa-brands fa-instagram"></i></a>
-              <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-solid fa-envelope"></i></a>
+            <div class="social-row">
+              <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a class="li" href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a class="ig" href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
           </div>
 
           <!-- center photo -->
-          <div
-            class="relative h-[240px] sm:h-[290px] xl:h-[350px] flex items-center justify-center order-first md:order-none"
-          >
-            <div
-              class="absolute top-1/2 left-1/2 w-[210px] h-[210px] sm:w-[260px] sm:h-[260px] xl:w-[310px] xl:h-[310px] bg-gradient-to-br from-indigo-300 via-violet-300 to-violet-200 opacity-75 rounded-[58%_42%_55%_45%/45%_55%_45%_55%] will-change-transform motion-safe:animate-blob"
-            ></div>
+          <div class="hero-photo">
+            <div class="blob"></div>
             <img
-              src="./IMG/PHOTO%201.jpg"
+              src="./IMG/PHOTO 1.webp"
               alt="Santhoshraj profile photo"
               width="265"
               height="265"
               fetchpriority="high"
               decoding="async"
-              class="relative z-[1] w-[180px] h-[180px] sm:w-[225px] sm:h-[225px] xl:w-[265px] xl:h-[265px] rounded-full object-cover object-[center_25%] border-8 border-white shadow-xl shadow-brand/20 bg-white"
+              class="profile"
             />
           </div>
 
           <!-- right -->
-          <div
-            class="md:col-span-2 xl:col-span-1 text-center xl:text-left xl:pl-5"
-          >
-            <p
-              class="text-[13px] font-semibold tracking-wider uppercase text-brand mb-3.5"
-            >
-              Turning ideas into real projects
-            </p>
-            <h2
-              class="text-[30px] md:text-[34px] xl:text-[42px] font-extrabold leading-[1.15] tracking-tight text-navy"
-            >
-              Clean Code.<br /><span class="text-brand"
-                >Creative Solutions.</span
-              >
-            </h2>
-            <p
-              class="mt-3 mb-5 text-base text-slate-600 max-w-[360px] mx-auto xl:mx-0"
-            >
-              Constantly learning and building projects to solve real-world
-              problems.
-            </p>
+          <div class="hero-right">
+            <p class="tagline">Turning ideas into real projects</p>
+            <h2 class="hero-title">Clean Code.<br /><span class="accent">Creative Solutions.</span></h2>
+            <p class="hero-sub">Constantly learning and building projects to solve real-world problems.</p>
 
-            <div class="flex justify-center xl:justify-start">
-              <div
-                class="px-5 sm:pr-7 sm:mr-7 sm:pl-0 sm:border-r border-line text-center xl:text-left"
-              >
-                <strong
-                  class="block text-[22px] sm:text-[28px] font-extrabold text-brand"
-                  >10+</strong
-                ><small class="text-sm text-slate-500">Projects Built</small>
-              </div>
-              <div
-                class="px-5 sm:pr-7 sm:mr-7 sm:pl-0 sm:border-r border-line text-center xl:text-left"
-              >
-                <strong
-                  class="block text-[22px] sm:text-[28px] font-extrabold text-brand"
-                  >DSA</strong
-                ><small class="text-sm text-slate-500">Problem Solving</small>
-              </div>
-              <div class="px-5 sm:px-0 text-center xl:text-left">
-                <strong
-                  class="block text-[22px] sm:text-[28px] font-extrabold text-brand"
-                  >MERN</strong
-                ><small class="text-sm text-slate-500">Stack Learning</small>
-              </div>
+            <div class="stats">
+              <div class="stat"><strong>10+</strong><small>Projects Built</small></div>
+              <div class="stat"><strong>DSA</strong><small>Problem Solving</small></div>
+              <div class="stat stat-last"><strong>MERN</strong><small>Stack Learning</small></div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ================= ABOUT ================= -->
-      <section id="about" class="bg-soft py-8 md:py-12 scroll-mt-20">
-        <div
-          class="w-full px-5 sm:px-[30px] grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-start"
-        >
+      <section id="about" class="about">
+        <div class="container about-grid">
           <div>
-            <span
-              class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-              >About Me</span
-            >
-            <h2
-              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-5 lg:mb-6"
-            >
-              Get to Know Me
-            </h2>
-            <p class="text-[15.5px] text-slate-600 mb-6">
+            <span class="eyebrow">About Me</span>
+            <h2 class="section-title">Get to Know Me</h2>
+            <p class="about-desc">
               I'm Santhoshraj, a Computer Science student passionate about web
               development, problem solving and building real-world projects. I
               love learning new technologies and creating applications that make
               an impact.
             </p>
-            <ul class="grid gap-3.5 text-[15px]">
-              <li class="flex items-center gap-3.5">
-                <i
-                  class="fa-regular fa-user w-[18px] text-center text-brand"
-                ></i
-                ><span><strong>Name:</strong> SANTHOSHRAJ</span>
-              </li>
-              <li class="flex items-center gap-3.5">
-                <i
-                  class="fa-solid fa-graduation-cap w-[18px] text-center text-brand"
-                ></i
-                ><span
-                  ><strong>Education:</strong> B.E Computer Science and
-                  Engineering</span
-                >
-              </li>
-              <li class="flex items-center gap-3.5">
-                <i
-                  class="fa-solid fa-location-dot w-[18px] text-center text-brand"
-                ></i
-                ><span
-                  ><strong>Location:</strong> Coimbatore, Tamil Nadu,
-                  India</span
-                >
-              </li>
-              <li class="flex items-center gap-3.5">
-                <i
-                  class="fa-solid fa-envelope w-[18px] text-center text-brand"
-                ></i
-                ><span class="break-all"
-                  ><strong>Email:</strong> santhoshkathirkk@gmail.com</span
-                >
-              </li>
+            <ul class="info-list">
+              <li><i class="fa-regular fa-user"></i><span><strong>Name:</strong> SANTHOSHRAJ</span></li>
+              <li><i class="fa-solid fa-graduation-cap"></i><span><strong>Education:</strong> B.E Computer Science and Engineering</span></li>
+              <li><i class="fa-solid fa-location-dot"></i><span><strong>Location:</strong> Coimbatore, Tamil Nadu, India</span></li>
+              <li><i class="fa-solid fa-envelope"></i><span class="break"><strong>Email:</strong> santhoshkathirkk@gmail.com</span></li>
             </ul>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div
-              class="bg-white border border-line rounded-2xl px-5 py-7 text-center transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
-            >
-              <div class="text-brand font-bold text-[15px] mb-[18px]">
-                School
-              </div>
+          <div class="edu-grid">
+            <div class="card edu-card">
+              <div class="edu-label">School</div>
               <img
-                src="./IMG/SRM.jpg"
+                src="./IMG/SRM.webp"
                 alt="Sairam Matriculation Higher Secondary School logo"
                 width="140"
-                height="110"
+                height="140"
                 loading="lazy"
                 decoding="async"
-                class="w-[140px] h-auto mx-auto mb-[18px] object-contain [clip-path:inset(6%_0_6%_0)]"
+                class="edu-logo srm"
               />
-              <h4 class="text-base font-bold text-navy leading-snug">
-                Sairam Matriculation Higher Secondary School
-              </h4>
-              <p class="text-[13px] text-slate-500 mt-1.5 mb-4">
-                Tamil Nadu, India
-              </p>
-              <span
-                class="inline-block px-4 py-1.5 rounded-full text-[13px] font-semibold bg-amber-100 text-amber-700"
-                >H.S.C</span
-              >
+              <h4 class="edu-name">Sairam Matriculation Higher Secondary School</h4>
+              <p class="edu-loc">Tamil Nadu, India</p>
+              <span class="pill pill-amber">H.S.C</span>
             </div>
-            <div
-              class="bg-white border border-line rounded-2xl px-5 py-7 text-center transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
-            >
-              <div class="text-brand font-bold text-[15px] mb-[18px]">
-                College
-              </div>
+
+            <div class="card edu-card">
+              <div class="edu-label">College</div>
               <img
-                src="./IMG/VSB.jpg"
+                src="./IMG/VSB.webp"
                 alt="V.S.B College of Engineering Technical Campus logo"
                 width="110"
                 height="110"
                 loading="lazy"
                 decoding="async"
-                class="w-[110px] h-[110px] mx-auto mb-[18px] object-contain"
+                class="edu-logo"
               />
-              <h4 class="text-base font-bold text-navy leading-snug">
-                V.S.B College of Engineering Technical Campus
-              </h4>
-              <h4 class="text-base font-bold text-navy leading-snug">
-                (Autonomous)
-              </h4>
-              <p class="text-[13px] text-slate-500 mt-1.5 mb-4">
-                Coimbatore, Tamil Nadu
-              </p>
-              <span
-                class="inline-block px-4 py-1.5 rounded-full text-[13px] font-semibold bg-violet-100 text-brand"
-                >Final Year</span
-              >
+              <h4 class="edu-name">V.S.B College of Engineering Technical Campus (Autonomous)</h4>
+              <p class="edu-loc">Coimbatore, Tamil Nadu</p>
+              <span class="pill pill-violet">Final Year</span>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ================= SKILLS ================= -->
-      <section id="skills" class="bg-soft pb-8 md:pb-12 scroll-mt-20">
-        <div class="w-full px-5 sm:px-[30px] text-center">
-          <span
-            class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-            >Skills</span
-          >
-          <h2
-            class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-6"
-          >
-            My Skills &amp; Technologies
-          </h2>
+      <section id="skills" class="skills">
+        <div class="container center">
+          <span class="eyebrow">Skills</span>
+          <h2 class="section-title">My Skills &amp; Technologies</h2>
 
-          <div class="overflow-hidden w-full">
-            <div
-              id="skillTrack"
-              class="flex w-max will-change-transform motion-safe:animate-marquee"
-            >
-              <div class="skill bg-gray-50">
-                <img src="./IMG/HTML.png" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/REACT.png" alt="React" width="52" height="52" loading="lazy" decoding="async" /><span>React</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/TAILWIND%20CSS.webp" alt="Tailwind CSS" width="52" height="52" loading="lazy" decoding="async" /><span>Tailwind CSS</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/NODE%20JS.webp" alt="Node.js" width="52" height="52" loading="lazy" decoding="async" /><span>Node.js</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/EXPRESSJS.webp" alt="Express.js" width="52" height="52" loading="lazy" decoding="async" /><span>Express.js</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/MONGODB.png" alt="MongoDB" width="52" height="52" loading="lazy" decoding="async" /><span>MongoDB</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/GIT.webp" alt="Git" width="52" height="52" loading="lazy" decoding="async" /><span>Git</span>
-              </div>
-              <div class="skill bg-gray-50">
-                <img src="./IMG/GITHUB.png" alt="GitHub" width="52" height="52" loading="lazy" decoding="async" /><span>GitHub</span>
-              </div>
+          <div class="marquee-wrap">
+            <div id="skillTrack" class="marquee">
+              <div class="skill"><img src="./IMG/HTML.webp" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span></div>
+              <div class="skill"><img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span></div>
+              <div class="skill"><img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span></div>
+              <div class="skill"><img src="./IMG/REACT.webp" alt="React" width="52" height="52" loading="lazy" decoding="async" /><span>React</span></div>
+              <div class="skill"><img src="./IMG/TAILWIND%20CSS.webp" alt="Tailwind CSS" width="52" height="52" loading="lazy" decoding="async" /><span>Tailwind CSS</span></div>
+              <div class="skill"><img src="./IMG/NODE%20JS.webp" alt="Node.js" width="52" height="52" loading="lazy" decoding="async" /><span>Node.js</span></div>
+              <div class="skill"><img src="./IMG/EXPRESSJS.webp" alt="Express.js" width="52" height="52" loading="lazy" decoding="async" /><span>Express.js</span></div>
+              <div class="skill"><img src="./IMG/MONGODB.webp" alt="MongoDB" width="52" height="52" loading="lazy" decoding="async" /><span>MongoDB</span></div>
+              <div class="skill"><img src="./IMG/GIT.webp" alt="Git" width="52" height="52" loading="lazy" decoding="async" /><span>Git</span></div>
+              <div class="skill"><img src="./IMG/GITHUB.webp" alt="GitHub" width="52" height="52" loading="lazy" decoding="async" /><span>GitHub</span></div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ================= PROJECTS ================= -->
-      <section id="projects" class="pt-8 md:pt-12 pb-8 md:pb-10 scroll-mt-20">
-        <div class="w-full px-5 sm:px-[30px]">
-          <div class="text-center">
-            <span
-              class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-              >Projects</span
-            >
-            <h2
-              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-6"
-            >
-              My Recent Projects
-            </h2>
+      <section id="projects" class="projects">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Projects</span>
+            <h2 class="section-title">My Recent Projects</h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
-            >
-              <div class="h-[190px] bg-white overflow-hidden">
-                <img
-                  src="./IMG/GREENDEN.png"
-                  alt="Greenden plant store preview"
-                  width="400"
-                  height="190"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-top origin-top"
-                />
+          <div class="grid-cards">
+            <article class="card project-card">
+              <div class="thumb">
+                <img src="./IMG/GREENDEN.webp" alt="Greenden plant store preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
-              <div class="p-[22px] flex flex-col flex-1">
-                <h3 class="text-lg font-bold text-navy mb-2">
-                  Greenden – Plant Store
-                </h3>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]">HTML</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#cdf5fb]">Tailwind CSS</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]">JavaScript</span>
+              <div class="project-body">
+                <h3 class="project-title">Greenden – Plant Store</h3>
+                <div class="tags">
+                  <span class="tag tag-html">HTML</span>
+                  <span class="tag tag-tw">Tailwind CSS</span>
+                  <span class="tag tag-js">JavaScript</span>
                 </div>
-                <p class="text-sm text-slate-500 mb-5 flex-1">
-                  A responsive plant store website built using HTML, Tailwind
-                  CSS and JavaScript.
-                </p>
-                <div class="flex gap-3">
+                <p class="project-desc">A responsive plant store website built using HTML, Tailwind CSS and JavaScript.</p>
+                <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold bg-brand text-white transition hover:bg-brand-dark"
-                    >Live Demo</a
-                  >
+                  <a href="#" class="link-btn link-solid">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold border-[1.5px] border-slate-300 text-ink transition hover:border-brand hover:text-brand"
-                    ><i class="fa-brands fa-github"></i> GitHub</a
-                  >
+                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
 
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
-            >
-              <div class="h-[190px] bg-white overflow-hidden">
-                <img
-                  src="./IMG/UDEMY.png"
-                  alt="Udemy clone preview"
-                  width="400"
-                  height="190"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-top origin-top"
-                />
+            <article class="card project-card">
+              <div class="thumb">
+                <img src="./IMG/UDEMY.webp" alt="Udemy clone preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
-              <div class="p-[22px] flex flex-col flex-1">
-                <h3 class="text-lg font-bold text-navy mb-2">Udemy Clone</h3>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]">HTML</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0e6fb]">CSS3</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]">JavaScript</span>
+              <div class="project-body">
+                <h3 class="project-title">Udemy Clone</h3>
+                <div class="tags">
+                  <span class="tag tag-html">HTML</span>
+                  <span class="tag tag-css">CSS3</span>
+                  <span class="tag tag-js">JavaScript</span>
                 </div>
-                <p class="text-sm text-slate-500 mb-5 flex-1">
-                  A responsive Udemy clone built with HTML, CSS and JavaScript.
-                </p>
-                <div class="flex gap-3">
+                <p class="project-desc">A responsive Udemy clone built with HTML, CSS and JavaScript.</p>
+                <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold bg-brand text-white transition hover:bg-brand-dark"
-                    >Live Demo</a
-                  >
+                  <a href="#" class="link-btn link-solid">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold border-[1.5px] border-slate-300 text-ink transition hover:border-brand hover:text-brand"
-                    ><i class="fa-brands fa-github"></i> GitHub</a
-                  >
+                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
 
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group md:col-span-2 xl:col-span-1"
-            >
-              <div class="h-[190px] bg-white overflow-hidden">
-                <img
-                  src="./IMG/SMART.png"
-                  alt="Smart attendance system preview"
-                  width="400"
-                  height="190"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-top origin-top"
-                />
+            <article class="card project-card span-wide">
+              <div class="thumb">
+                <img src="./IMG/SMART.webp" alt="Smart attendance system preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
-              <div class="p-[22px] flex flex-col flex-1">
-                <h3 class="text-lg font-bold text-navy mb-2">
-                  Smart Attendance System
-                </h3>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0d5fb]">React</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d4edd4]">Node.js</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#e2e4df]">Express.js</span>
-                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#a7eb9b]">MongoDB</span>
+              <div class="project-body">
+                <h3 class="project-title">Smart Attendance System</h3>
+                <div class="tags">
+                  <span class="tag tag-react">React</span>
+                  <span class="tag tag-node">Node.js</span>
+                  <span class="tag tag-express">Express.js</span>
+                  <span class="tag tag-mongo">MongoDB</span>
                 </div>
-                <p class="text-sm text-slate-500 mb-5 flex-1">
-                  A web application to manage student attendance with reports
-                  and notifications.
-                </p>
-                <div class="flex gap-3">
+                <p class="project-desc">A web application to manage student attendance with reports and notifications.</p>
+                <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold bg-brand text-white transition hover:bg-brand-dark"
-                    >Live Demo</a
-                  >
+                  <a href="#" class="link-btn link-solid">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a
-                    href="#"
-                    class="flex-1 text-center px-3 py-2.5 rounded-lg text-[13px] font-semibold border-[1.5px] border-slate-300 text-ink transition hover:border-brand hover:text-brand"
-                    ><i class="fa-brands fa-github"></i> GitHub</a
-                  >
+                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
@@ -600,74 +283,38 @@
       </section>
 
       <!-- ================= CERTIFICATIONS ================= -->
-      <section
-        id="certifications"
-        class="bg-white text-black pb-8 md:pb-10 scroll-mt-28"
-      >
-        <div class="w-full px-5 sm:px-[30px]">
-          <div class="text-center mb-8 md:mb-10">
-            <span
-              class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-            >
-              Certifications
-            </span>
-
-            <h2
-              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-3"
-            >
-              My Certifications &amp; Achievements
-            </h2>
-
-            <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
-              Professional certifications, internship experiences, and
-              technical achievements.
-            </p>
+      <section id="certifications" class="certs">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Certifications</span>
+            <h2 class="section-title">My Certifications &amp; Achievements</h2>
+            <p class="section-sub">Professional certifications, internship experiences, and technical achievements.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div class="grid-cards">
             <!-- Certificate 1 -->
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
-            >
+            <article class="card cert-card">
               <a
                 href="./IMG/WEB%20%20DEVELOPMENT.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View Web Development certificate"
-                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
+                class="cert-link"
               >
-                <img
-                  src="./IMG/webdevelopment.jpeg"
-                  alt="Web Development Certificate"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-center"
-                />
-                <div
-                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Click to view credential
+                <img src="./IMG/webdevelopment.webp" alt="Web Development Certificate" loading="lazy" decoding="async" />
+                <div class="cert-overlay"></div>
+                <span class="cert-badge">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
                 </span>
               </a>
-
-              <div class="p-6 flex flex-col flex-1">
-                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
-                    Internship &amp; Web Development
-                  </span>
-                  <span class="text-sm text-slate-500">
-                    February 2025 – March 2025
-                  </span>
+              <div class="cert-body">
+                <div class="cert-meta">
+                  <span class="cert-cat">Internship &amp; Web Development</span>
+                  <span class="cert-date">February 2025 – March 2025</span>
                 </div>
-                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-                  Web Development Certificate
-                </h3>
-                <p class="text-indigo-500 font-bold mb-4">CodSoft</p>
-                <p class="text-slate-600 text-[15px] leading-relaxed">
+                <h3 class="cert-title">Web Development Certificate</h3>
+                <p class="cert-org">CodSoft</p>
+                <p class="cert-desc">
                   Completed a one-month internship in Web Development, gaining
                   practical experience in HTML, CSS, and JavaScript.
                 </p>
@@ -675,97 +322,60 @@
             </article>
 
             <!-- Certificate 2 -->
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
-            >
+            <article class="card cert-card">
               <a
                 href="./IMG/SQL.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View HackerRank SQL Advanced certificate"
-                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
+                class="cert-link"
               >
-                <img
-                  src="./IMG/sql.jpg"
-                  alt="HackerRank SQL Advanced Certificate"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-center"
-                />
-                <div
-                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Click to view credential
+                <img src="./IMG/sql.webp" alt="HackerRank SQL Advanced Certificate" loading="lazy" decoding="async" />
+                <div class="cert-overlay"></div>
+                <span class="cert-badge">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
                 </span>
               </a>
-
-              <div class="p-6 flex flex-col flex-1">
-                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
-                    Database &amp; SQL
-                  </span>
-                  <span class="text-sm text-slate-500"> HackerRank </span>
+              <div class="cert-body">
+                <div class="cert-meta">
+                  <span class="cert-cat">Database &amp; SQL</span>
+                  <span class="cert-date">HackerRank</span>
                 </div>
-                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-                  SQL(Intermediate)Certificate
-                </h3>
-                <p class="text-indigo-500 font-bold mb-4">HackerRank</p>
-                <p class="text-slate-600 text-[15px] leading-relaxed">
+                <h3 class="cert-title">SQL (Intermediate) Certificate</h3>
+                <p class="cert-org">HackerRank</p>
+                <p class="cert-desc">
                   Demonstrated SQL skills through advanced database challenges,
-                  including complex queries, joins, subqueries, and
-                  aggregation.
+                  including complex queries, joins, subqueries, and aggregation.
                 </p>
               </div>
             </article>
 
             <!-- Certificate 3 -->
-            <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group md:col-span-2 xl:col-span-1"
-            >
+            <article class="card cert-card span-wide">
               <a
-                href="./IMG/JAVA (BASIC).pdf"
+                href="./IMG/JAVA%20(BASIC).pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View HackerRank Java Basic certificate"
-                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
+                class="cert-link"
               >
-                <img
-                  src="./IMG/java.jpg"
-                  alt="HackerRank Java Basic Certificate"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover object-center"
-                />
-                <div
-                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Click to view credential
+                <img src="./IMG/java.webp" alt="HackerRank Java Basic Certificate" loading="lazy" decoding="async" />
+                <div class="cert-overlay"></div>
+                <span class="cert-badge">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
                 </span>
               </a>
-
-              <div class="p-6 flex flex-col flex-1">
-                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
-                    Programming
-                  </span>
-                  <span class="text-sm text-slate-500"> HackerRank </span>
+              <div class="cert-body">
+                <div class="cert-meta">
+                  <span class="cert-cat">Programming</span>
+                  <span class="cert-date">HackerRank</span>
                 </div>
-                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-                  Java (Basic) Certificate
-                </h3>
-                <p class="text-indigo-500 font-bold mb-4">HackerRank</p>
-                <p class="text-slate-600 text-[15px] leading-relaxed">
+                <h3 class="cert-title">Java (Basic) Certificate</h3>
+                <p class="cert-org">HackerRank</p>
+                <p class="cert-desc">
                   Demonstrated foundational Java programming skills, including
-                  data types, control flow, object-oriented programming
-                  basics, and problem-solving.
+                  data types, control flow, object-oriented programming basics,
+                  and problem-solving.
                 </p>
               </div>
             </article>
@@ -774,195 +384,105 @@
       </section>
 
       <!-- ================= JOURNEY ================= -->
-      <section
-        id="journey"
-        class="bg-gradient-to-b from-white to-soft pb-4 md:pb-6 scroll-mt-28"
-      >
-        <div class="w-full px-5 sm:px-[30px]">
-          <div class="text-center mb-8 md:mb-10">
-            <span
-              class="block text-[13px] font-semibold tracking-[0.3em] uppercase text-brand mb-2"
-              >Journey</span
-            >
-            <h2
-              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-3"
-            >
-              My Learning Journey
-            </h2>
-            <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
+      <section id="journey" class="journey">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow journey-eyebrow">Journey</span>
+            <h2 class="section-title">My Learning Journey</h2>
+            <p class="section-sub">
               From school to full stack development – a journey of continuous
               learning, growth and building real-world skills.
             </p>
-            <div
-              class="flex items-center justify-center gap-2 mt-5"
-              aria-hidden="true"
-            >
-              <span class="w-14 h-0.5 bg-brand/70 rounded"></span>
-              <span class="w-2 h-2 rounded-full bg-brand"></span>
-              <span class="w-14 h-0.5 bg-brand/70 rounded"></span>
+            <div class="divider" aria-hidden="true">
+              <span class="bar"></span>
+              <span class="dot"></span>
+              <span class="bar"></span>
             </div>
           </div>
 
-          <div class="relative max-w-6xl mx-auto">
-            <div
-              class="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 border-l-2 border-dashed border-indigo-200"
-              aria-hidden="true"
-            ></div>
+          <div class="timeline-wrap">
+            <div class="timeline-line" aria-hidden="true"></div>
 
-            <ol
-              class="list-none grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-0"
-            >
+            <ol class="timeline">
               <!-- 01 : left -->
-              <li class="relative md:col-start-1 md:row-start-1 md:mb-6">
-                <div
-                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
-                >
-                  <div
-                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-white overflow-hidden flex items-center justify-center p-3"
-                  >
+              <li class="tl-item tl-1">
+                <div class="tl-card">
+                  <div class="tl-logo">
                     <img
-                      src="./IMG/SRM.jpg"
+                      src="./IMG/SRM.webp"
                       alt="Sairam Matriculation Higher Secondary School logo"
                       width="140"
-                      height="110"
+                      height="140"
                       loading="lazy"
                       decoding="async"
-                      class="w-[140px] h-auto mx-auto mb-[18px] object-contain [clip-path:inset(6%_0_6%_0)]"
+                      class="srm"
                     />
                   </div>
-                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
-                    <span
-                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
-                      >01</span
-                    >
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm sm:text-base font-semibold text-brand">
-                        2021 – 2023
-                      </div>
-                      <h4
-                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
-                      >
-                        Higher Secondary Education
-                      </h4>
-                      <p class="text-sm text-slate-500 mb-3">
-                        Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.
-                      </p>
-                      <span
-                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
-                      >
-                        <i class="fa-solid fa-building-columns"></i> School
-                      </span>
+                  <div class="tl-body">
+                    <span class="tl-num">01</span>
+                    <div class="tl-content">
+                      <div class="tl-date">2021 – 2023</div>
+                      <h4 class="tl-title">Higher Secondary Education</h4>
+                      <p class="tl-desc">Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.</p>
+                      <span class="tl-tag"><i class="fa-solid fa-building-columns"></i> School</span>
                     </div>
                   </div>
                 </div>
-                <span
-                  class="hidden md:flex absolute top-1/2 -right-8 translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <span class="w-4 h-4 rounded-full bg-brand"></span>
-                </span>
+                <span class="tl-dot right" aria-hidden="true"></span>
               </li>
 
-              <!-- 02 : right (staggered) -->
-              <li class="relative md:col-start-2 md:row-start-2 md:-mt-6 md:mb-6">
-                <div
-                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
-                >
-                  <div
-                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-white overflow-hidden flex items-center justify-center p-3"
-                  >
+              <!-- 02 : right -->
+              <li class="tl-item tl-2">
+                <div class="tl-card">
+                  <div class="tl-logo">
                     <img
-                      src="./IMG/VSB.jpg"
+                      src="./IMG/VSB.webp"
                       alt="V.S.B College of Engineering Technical Campus logo"
                       width="128"
                       height="128"
                       loading="lazy"
                       decoding="async"
-                      class="block w-full h-full object-contain"
                     />
                   </div>
-                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
-                    <span
-                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
-                      >02</span
-                    >
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm sm:text-base font-semibold text-brand">
-                        2023 – 2027
-                      </div>
-                      <h4
-                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
-                      >
-                        B.E Computer Science and Engineering
-                      </h4>
-                      <p class="text-sm text-slate-500 mb-3">
-                        V.S.B College of Engineering Technical Campus, Coimbatore.
-                      </p>
-                      <span
-                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
-                      >
-                        <i class="fa-solid fa-graduation-cap"></i> College
-                      </span>
+                  <div class="tl-body">
+                    <span class="tl-num">02</span>
+                    <div class="tl-content">
+                      <div class="tl-date">2023 – 2027</div>
+                      <h4 class="tl-title">B.E Computer Science and Engineering</h4>
+                      <p class="tl-desc">V.S.B College of Engineering Technical Campus, Coimbatore.</p>
+                      <span class="tl-tag"><i class="fa-solid fa-graduation-cap"></i> College</span>
                     </div>
                   </div>
                 </div>
-                <span
-                  class="hidden md:flex absolute top-1/2 -left-8 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <span class="w-4 h-4 rounded-full bg-brand"></span>
-                </span>
+                <span class="tl-dot left" aria-hidden="true"></span>
               </li>
 
               <!-- 03 : left -->
-              <li class="relative md:col-start-1 md:row-start-3 md:-mt-6">
-                <div
-                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
-                >
-                  <div
-                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 overflow-hidden flex items-center justify-center p-3"
-                  >
+              <li class="tl-item tl-3">
+                <div class="tl-card">
+                  <div class="tl-logo plain">
                     <img
-                      src="./IMG/client-logo-2.png"
+                      src="./IMG/client-logo-2.webp"
                       alt="MERN stack technologies"
                       width="104"
                       height="104"
                       loading="lazy"
                       decoding="async"
-                      class="block w-full h-full object-contain"
                     />
                   </div>
-                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
-                    <span
-                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
-                      >03</span
-                    >
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm sm:text-base font-semibold text-brand">
-                        2026 – Present
-                      </div>
-                      <h4
-                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
-                      >
-                        Full Stack Development Journey
-                      </h4>
-                      <p class="text-sm text-slate-500 mb-3">
+                  <div class="tl-body">
+                    <span class="tl-num">03</span>
+                    <div class="tl-content">
+                      <div class="tl-date">2026 – Present</div>
+                      <h4 class="tl-title">Full Stack Development Journey</h4>
+                      <p class="tl-desc">
                         Learning HTML, CSS, Tailwind CSS, JavaScript, React, NodeJs, ExpressJs, MongoDB and building real-world projects.
                       </p>
-                      <span
-                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
-                      >
-                        <i class="fa-solid fa-laptop"></i> Learning &amp; Building
-                      </span>
+                      <span class="tl-tag"><i class="fa-solid fa-laptop"></i> Learning &amp; Building</span>
                     </div>
                   </div>
                 </div>
-                <span
-                  class="hidden md:flex absolute top-1/2 -right-8 translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <span class="w-4 h-4 rounded-full bg-brand"></span>
-                </span>
+                <span class="tl-dot right" aria-hidden="true"></span>
               </li>
             </ol>
           </div>
@@ -970,113 +490,94 @@
       </section>
 
       <!-- ================= CONTACT ================= -->
-      <section id="contact" class="bg-soft py-8 md:py-12 scroll-mt-20">
-        <div class="w-full px-5 sm:px-[30px]">
-          <div
-            class="relative overflow-hidden bg-gradient-to-br from-white via-[#f7f8ff] to-indigo-50 border border-line rounded-[28px] shadow-xl shadow-brand/10 p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center"
-          >
-            <div class="pointer-events-none absolute -top-16 left-1/3 w-64 h-64 rounded-full bg-indigo-100/60 blur-2xl" aria-hidden="true"></div>
+      <section id="contact" class="contact">
+        <div class="container">
+          <div class="contact-box">
+            <div class="contact-blob" aria-hidden="true"></div>
 
             <!-- LEFT -->
-            <div class="relative">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="text-[13px] font-semibold tracking-wider uppercase text-brand">Contact</span>
-                <span class="w-8 h-0.5 bg-brand rounded"></span>
+            <div class="contact-left">
+              <div class="contact-eyebrow">
+                <span class="contact-tag">Contact</span>
+                <span class="line"></span>
               </div>
-              <h2 class="text-[34px] sm:text-[44px] font-extrabold text-navy tracking-tight leading-tight mb-3">
-                Get in <span class="text-brand">Touch</span>
-              </h2>
-              <p class="text-[15px] text-slate-600 max-w-[430px] mb-6">
+              <h2 class="contact-title">Get in <span class="accent">Touch</span></h2>
+              <p class="contact-text">
                 I'm always open to discussing new opportunities, interesting
                 projects or just having a conversation about technology.
               </p>
 
-              <div class="grid gap-4 max-w-[430px]">
-                <div class="flex gap-4 items-center">
-                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-[20px]">
-                    <i class="fa-solid fa-envelope"></i>
-                  </div>
-                  <div class="min-w-0">
-                    <strong class="block text-sm text-navy">Email</strong>
-                    <span class="text-sm text-slate-500 break-all">santhoshkathirkk@gmail.com</span>
+              <div class="contact-info">
+                <div class="info-row">
+                  <div class="info-icon ic-red"><i class="fa-solid fa-envelope"></i></div>
+                  <div>
+                    <strong>Email</strong>
+                    <span class="break">santhoshkathirkk@gmail.com</span>
                   </div>
                 </div>
-                <div class="flex gap-4 items-center">
-                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-[20px]">
-                    <i class="fa-solid fa-phone"></i>
-                  </div>
+                <div class="info-row">
+                  <div class="info-icon ic-green"><i class="fa-solid fa-phone"></i></div>
                   <div>
-                    <strong class="block text-sm text-navy">Phone</strong>
-                    <span class="text-sm text-slate-500">+91 9342214070</span>
+                    <strong>Phone</strong>
+                    <span>+91 9342214070</span>
                   </div>
                 </div>
-                <div class="flex gap-4 items-center">
-                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center text-[20px]">
-                    <i class="fa-solid fa-location-dot"></i>
-                  </div>
+                <div class="info-row">
+                  <div class="info-icon ic-rose"><i class="fa-solid fa-location-dot"></i></div>
                   <div>
-                    <strong class="block text-sm text-navy">Location</strong>
-                    <span class="text-sm text-slate-500">Coimbatore, Tamil Nadu, India</span>
+                    <strong>Location</strong>
+                    <span>Coimbatore, Tamil Nadu, India</span>
                   </div>
                 </div>
               </div>
 
-              <hr class="border-line my-6 max-w-[430px]" />
+              <hr class="contact-divider" />
 
-              <p class="font-bold text-navy text-sm">Connect With Me</p>
-              <div class="flex gap-[18px] text-[22px] mt-3">
-                <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
-                  class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
-                  class="text-[#0a66c2] transition hover:-translate-y-[3px]"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
-                  class="text-[#e1306c] transition hover:-translate-y-[3px]"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
-                  class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-solid fa-envelope"></i></a>
+              <p class="connect-label">Connect With Me</p>
+              <div class="social-row left contact-social">
+                <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a class="li" href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a class="ig" href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
               </div>
 
-              <div class="hidden xl:flex absolute right-0 bottom-0 w-[250px] h-[250px] items-center justify-center" aria-hidden="true">
-                <div class="absolute inset-4 rounded-full bg-indigo-100/70"></div>
-                <i class="fa-solid fa-envelope-open-text relative text-[110px] text-brand drop-shadow-xl"></i>
-                <i class="fa-solid fa-paper-plane absolute -top-6 right-2 text-[44px] text-indigo-400 -rotate-12"></i>
+              <div class="contact-deco" aria-hidden="true">
+                <div class="deco-circle"></div>
+                <i class="fa-solid fa-envelope-open-text deco-main"></i>
+                <i class="fa-solid fa-paper-plane deco-plane"></i>
               </div>
             </div>
 
             <!-- RIGHT : form -->
-            <div class="relative bg-white border border-line rounded-3xl shadow-lg shadow-brand/5 p-5 sm:p-7">
-              <div class="flex items-center gap-4 mb-6">
-                <div class="w-14 h-14 shrink-0 rounded-full bg-indigo-50 text-brand flex items-center justify-center text-[22px]">
-                  <i class="fa-solid fa-comment-dots"></i>
-                </div>
+            <div class="form-card">
+              <div class="form-head">
+                <div class="form-icon"><i class="fa-solid fa-comment-dots"></i></div>
                 <div>
-                  <h3 class="text-lg sm:text-xl font-extrabold text-navy leading-tight">Send Me a Message</h3>
-                  <p class="text-[13px] sm:text-sm text-slate-500">
-                    Fill out the form below and I'll get back to you as soon as possible.
-                  </p>
+                  <h3>Send Me a Message</h3>
+                  <p>Fill out the form below and I'll get back to you as soon as possible.</p>
                 </div>
               </div>
 
-              <form id="contactForm" class="grid gap-3.5">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <div class="relative">
-                    <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
-                    <input type="text" id="name" name="name" autocomplete="name" aria-label="Your name" placeholder="Your Name" required class="field pl-11" />
+              <form id="contactForm" class="contact-form">
+                <div class="form-row">
+                  <div class="field-wrap">
+                    <i class="fa-regular fa-user field-icon"></i>
+                    <input type="text" id="name" name="name" autocomplete="name" aria-label="Your name" placeholder="Your Name" required class="field" />
                   </div>
-                  <div class="relative">
-                    <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
-                    <input type="email" id="email" name="email" autocomplete="email" aria-label="Your email" placeholder="Your Email" required class="field pl-11" />
+                  <div class="field-wrap">
+                    <i class="fa-regular fa-envelope field-icon"></i>
+                    <input type="email" id="email" name="email" autocomplete="email" aria-label="Your email" placeholder="Your Email" required class="field" />
                   </div>
                 </div>
-                <div class="relative">
-                  <i class="fa-regular fa-file-lines absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
-                  <input type="text" id="subject" name="subject" aria-label="Subject" placeholder="Subject (Optional)" class="field pl-11" />
+                <div class="field-wrap">
+                  <i class="fa-regular fa-file-lines field-icon"></i>
+                  <input type="text" id="subject" name="subject" aria-label="Subject" placeholder="Subject (Optional)" class="field" />
                 </div>
-                <div class="relative">
-                  <i class="fa-regular fa-message absolute left-4 top-4 text-brand"></i>
-                  <textarea id="message" name="message" aria-label="Your message" placeholder="Your Message" required class="field pl-11 min-h-[150px] resize-y"></textarea>
+                <div class="field-wrap">
+                  <i class="fa-regular fa-message field-icon top"></i>
+                  <textarea id="message" name="message" aria-label="Your message" placeholder="Your Message" required class="field"></textarea>
                 </div>
-                <button type="submit"
-                  class="w-full py-[15px] rounded-xl bg-gradient-to-r from-indigo-500 to-brand text-white font-semibold text-[15px] shadow-lg shadow-brand/30 transition hover:-translate-y-0.5 hover:shadow-xl">
+                <button type="submit" class="submit-btn">
                   <i class="fa-solid fa-paper-plane"></i> Send Message
                 </button>
               </form>
@@ -1087,117 +588,18 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-navy text-slate-300 py-5">
-      <div
-        class="w-full px-5 sm:px-[30px] flex flex-col md:flex-row justify-between items-center gap-5 text-center"
-      >
-        <p class="text-[13px]">&copy; 2026 Santhoshraj. All rights reserved.</p>
-
-        <div class="flex gap-4 text-[17px]">
-          <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
-            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
-            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
-            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-instagram"></i></a>
-          <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
-            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-solid fa-envelope"></i></a>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="copy">&copy; 2026 Santhoshraj. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </footer>
 
-    <script>
-      // Mobile side drawer (1000ms slide)
-      const menuBtn = document.getElementById("menuBtn");
-      const menuClose = document.getElementById("menuClose");
-      const navLinks = document.getElementById("navLinks");
-      const navOverlay = document.getElementById("navOverlay");
-
-      // Animations are OFF on page load / resize, so the drawer never
-      // flashes or slides on its own. They turn ON only when the user opens it.
-      const navAnim = ["transition-[transform,visibility]", "duration-[1000ms]", "ease-in-out"];
-      const overlayAnim = ["transition-opacity", "duration-[1000ms]", "ease-in-out"];
-      function setAnim(on) {
-        navLinks.classList.toggle("transition-none", !on);
-        navOverlay.classList.toggle("transition-none", !on);
-        navAnim.forEach((c) => navLinks.classList.toggle(c, on));
-        overlayAnim.forEach((c) => navOverlay.classList.toggle(c, on));
-        void navLinks.offsetWidth; // apply instantly
-      }
-
-      function setMenu(open) {
-        if (open) setAnim(true);
-        navLinks.classList.toggle("translate-x-full", !open);
-        navLinks.classList.toggle("invisible", !open);
-        navOverlay.classList.toggle("opacity-0", !open);
-        navOverlay.classList.toggle("pointer-events-none", !open);
-        menuBtn.setAttribute("aria-expanded", open);
-        document.documentElement.style.overflow = open ? "hidden" : "";
-      }
-      menuBtn.addEventListener("click", () => setMenu(true));
-      menuClose.addEventListener("click", () => setMenu(false));
-      navOverlay.addEventListener("click", () => setMenu(false));
-      navLinks.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => {
-          if (innerWidth < 768) setMenu(false);
-        }),
-      );
-      addEventListener("resize", () => {
-        setAnim(false);
-        setMenu(false);
-      });
-
-      // Seamless skills marquee
-      const track = document.getElementById("skillTrack");
-      [...track.children].forEach((el) => {
-        const c = el.cloneNode(true);
-        c.setAttribute("aria-hidden", "true");
-        c.querySelector("img").alt = "";
-        track.appendChild(c);
-      });
-
-      // Active nav link using IntersectionObserver
-      const anchors = [...navLinks.querySelectorAll("a.nav-a")];
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              anchors.forEach((a) => a.removeAttribute("aria-current"));
-              const a = anchors.find(
-                (x) => x.getAttribute("href") === "#" + e.target.id,
-              );
-              if (a) a.setAttribute("aria-current", "true");
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -55% 0px" },
-      );
-      document.querySelectorAll("section[id]").forEach((s) => io.observe(s));
-
-      // Pause marquee when off-screen
-      new IntersectionObserver(([e]) => {
-        track.style.animationPlayState = e.isIntersecting ? "" : "paused";
-      }).observe(track);
-
-      // Contact form -> opens mail app
-      document.getElementById("contactForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-        const customSubject = document.getElementById("subject").value.trim();
-        const subject = encodeURIComponent(
-          customSubject || "Portfolio contact from " + name,
-        );
-        const body = encodeURIComponent(
-          message + "\n\nFrom: " + name + " (" + email + ")",
-        );
-        location.href =
-          "mailto:santhoshkathirkk@gmail.com?subject=" +
-          subject +
-          "&body=" +
-          body;
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
