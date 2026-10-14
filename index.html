@@ -11,7 +11,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Only the 4 weights actually used -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
       rel="stylesheet"
@@ -21,7 +20,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
-    <!-- Tailwind (CDN). For production: build with the Tailwind CLI to remove this runtime script -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script>
       tailwind.config = {
@@ -60,14 +58,15 @@
       };
     </script>
 
-    <!-- Remove default browser margins so no side gaps appear -->
     <style>
       html,
       body {
         margin: 0;
         padding: 0;
         width: 100%;
-        overflow-x: hidden;
+      }
+      body {
+        overflow-x: clip;
       }
       section,
       header,
@@ -76,14 +75,16 @@
       }
     </style>
 
-    <!-- Reusable Tailwind component classes (still pure Tailwind utilities, via @apply) -->
     <style type="text/tailwindcss">
       @layer components {
         .nav-a {
-          @apply relative block md:inline-block px-[30px] py-3.5 md:px-0 md:py-2 text-sm font-medium text-slate-700 transition-colors hover:text-brand
-               aria-[current=true]:text-brand
-               after:content-[''] after:hidden md:after:block after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:bg-brand after:rounded after:origin-left after:scale-x-0 after:transition-transform
-               aria-[current=true]:after:scale-x-100;
+          @apply flex items-center gap-2 px-4 py-3 text-sm font-medium text-slate-700 rounded-xl
+                 transition-all duration-200
+                 hover:text-brand hover:bg-white hover:shadow-lg hover:shadow-brand/20 hover:-translate-y-0.5
+                 aria-[current=true]:text-brand aria-[current=true]:bg-indigo-50 aria-[current=true]:shadow-md aria-[current=true]:shadow-brand/10;
+        }
+        .nav-a i {
+          @apply text-[14px] text-brand/80 w-4 text-center;
         }
         .skill {
           @apply shrink-0 w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] mr-4 bg-white border border-line rounded-2xl px-2 py-4 flex flex-col items-center justify-center gap-3 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10 hover:border-indigo-200;
@@ -102,10 +103,10 @@
   </head>
 
   <body
-    class="font-sans text-ink bg-white leading-relaxed antialiased overflow-x-hidden"
+    class="font-sans text-ink bg-white leading-relaxed antialiased overflow-x-clip pt-16 md:pt-[72px]"
   >
     <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-50 bg-white border-b border-line">
+    <header class="fixed top-0 inset-x-0 z-50 bg-white border-b border-line">
       <div
         class="w-full px-5 sm:px-[30px] h-16 md:h-[72px] flex items-center justify-between"
       >
@@ -124,18 +125,30 @@
           <i class="fa-solid fa-bars"></i>
         </button>
 
+        <!-- overlay (small screens) -->
+        <div
+          id="navOverlay"
+          class="md:hidden fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-none"
+          aria-hidden="true"
+        ></div>
+
+        <!-- side drawer on small screens, normal row on md+ -->
         <ul
           id="navLinks"
-          class="hidden md:flex absolute md:static top-16 left-0 right-0 flex-col md:flex-row bg-white md:bg-transparent border-y md:border-0 border-line md:gap-[34px]"
+          class="fixed md:static top-0 right-0 h-screen md:h-auto w-72 max-w-[80%] md:w-auto flex flex-col md:flex-row bg-white md:bg-transparent shadow-2xl md:shadow-none pt-20 md:pt-0 px-3 md:px-0 gap-1 md:gap-2 translate-x-full md:translate-x-0 invisible md:visible transition-none"
         >
-          <li><a href="#home" aria-current="true" class="nav-a">Home</a></li>
-          <li><a href="#about" class="nav-a">About</a></li>
-          <li><a href="#skills" class="nav-a">Skills</a></li>
-          <li><a href="#projects" class="nav-a">Projects</a></li>
-          <!-- FIXED: Certifications link added -->
-          <li><a href="#certifications" class="nav-a">Certifications</a></li>
-          <li><a href="#journey" class="nav-a">Journey</a></li>
-          <li><a href="#contact" class="nav-a">Contact</a></li>
+          <li class="absolute top-4 right-4 md:hidden">
+            <button id="menuClose" aria-label="Close menu" class="text-[22px] text-ink p-2 rounded-xl hover:bg-indigo-50 hover:text-brand transition">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+          <li><a href="#home" aria-current="true" class="nav-a"><i class="fa-solid fa-house"></i>Home</a></li>
+          <li><a href="#about" class="nav-a"><i class="fa-regular fa-user"></i>About</a></li>
+          <li><a href="#skills" class="nav-a"><i class="fa-solid fa-laptop-code"></i>Skills</a></li>
+          <li><a href="#projects" class="nav-a"><i class="fa-solid fa-folder-open"></i>Projects</a></li>
+          <li><a href="#certifications" class="nav-a"><i class="fa-solid fa-certificate"></i>Certifications</a></li>
+          <li><a href="#journey" class="nav-a"><i class="fa-solid fa-route"></i>Journey</a></li>
+          <li><a href="#contact" class="nav-a"><i class="fa-solid fa-envelope"></i>Contact</a></li>
         </ul>
       </div>
     </header>
@@ -186,40 +199,15 @@
               >
             </div>
 
-            <div
-              class="flex justify-center md:justify-start gap-[18px] text-[22px]"
-            >
-              <a
-                href="https://github.com/SANTHOSH0530"
-                target="_blank"
-                rel="noopener"
-                aria-label="GitHub"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/in/santhoshrajk"
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                class="text-[#0a66c2] transition hover:-translate-y-[3px]"
-                ><i class="fa-brands fa-linkedin"></i
-              ></a>
-              <!-- FIXED: Instagram link -->
-              <a
-                href="https://www.instagram.com/_santhosh._k/"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                class="text-[#e1306c] transition hover:-translate-y-[3px]"
-                ><i class="fa-brands fa-instagram"></i
-              ></a>
-              <a
-                href="mailto:santhoshkathirkk@gmail.com"
-                aria-label="Email"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"
-                ><i class="fa-solid fa-envelope"></i
-              ></a>
+            <div class="flex justify-center md:justify-start gap-[18px] text-[22px]">
+              <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
+                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
+                class="text-[#0a66c2] transition hover:-translate-y-[3px]"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
+                class="text-[#e1306c] transition hover:-translate-y-[3px]"><i class="fa-brands fa-instagram"></i></a>
+              <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
+                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-solid fa-envelope"></i></a>
             </div>
           </div>
 
@@ -231,7 +219,7 @@
               class="absolute top-1/2 left-1/2 w-[210px] h-[210px] sm:w-[260px] sm:h-[260px] xl:w-[310px] xl:h-[310px] bg-gradient-to-br from-indigo-300 via-violet-300 to-violet-200 opacity-75 rounded-[58%_42%_55%_45%/45%_55%_45%_55%] will-change-transform motion-safe:animate-blob"
             ></div>
             <img
-              src="IMG/PHOTO%201.png"
+              src="./IMG/PHOTO%201.png"
               alt="Santhoshraj profile photo"
               width="265"
               height="265"
@@ -357,7 +345,7 @@
                 School
               </div>
               <img
-                src="IMG/SRM.jpg"
+                src="./IMG/SRM.jpg"
                 alt="Sairam Matriculation Higher Secondary School logo"
                 width="140"
                 height="110"
@@ -383,7 +371,7 @@
                 College
               </div>
               <img
-                src="IMG/VSB.jpg"
+                src="./IMG/VSB.jpg"
                 alt="V.S.B College of Engineering Technical Campus logo"
                 width="110"
                 height="110"
@@ -428,104 +416,34 @@
               class="flex w-max will-change-transform motion-safe:animate-marquee"
             >
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/HTML.png"
-                  alt="HTML"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>HTML</span>
+                <img src="./IMG/HTML.png" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/CSS.webp"
-                  alt="CSS"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>CSS3</span>
+                <img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/JAVASCRIPT.webp"
-                  alt="JavaScript"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>JavaScript</span>
+                <img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/REACT.png"
-                  alt="React"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>React</span>
+                <img src="./IMG/REACT.png" alt="React" width="52" height="52" loading="lazy" decoding="async" /><span>React</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/TAILWIND%20CSS.webp"
-                  alt="Tailwind CSS"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>Tailwind CSS</span>
+                <img src="./IMG/TAILWIND%20CSS.webp" alt="Tailwind CSS" width="52" height="52" loading="lazy" decoding="async" /><span>Tailwind CSS</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/NODE%20JS.webp"
-                  alt="Node.js"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>Node.js</span>
+                <img src="./IMG/NODE%20JS.webp" alt="Node.js" width="52" height="52" loading="lazy" decoding="async" /><span>Node.js</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/EXPRESSJS.webp"
-                  alt="Express.js"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>Express.js</span>
+                <img src="./IMG/EXPRESSJS.webp" alt="Express.js" width="52" height="52" loading="lazy" decoding="async" /><span>Express.js</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/MONGODB.png"
-                  alt="MongoDB"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>MongoDB</span>
+                <img src="./IMG/MONGODB.png" alt="MongoDB" width="52" height="52" loading="lazy" decoding="async" /><span>MongoDB</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/GIT.webp"
-                  alt="Git"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>Git</span>
+                <img src="./IMG/GIT.webp" alt="Git" width="52" height="52" loading="lazy" decoding="async" /><span>Git</span>
               </div>
               <div class="skill bg-gray-50">
-                <img
-                  src="IMG/GITHUB.png"
-                  alt="GitHub"
-                  width="52"
-                  height="52"
-                  loading="lazy"
-                  decoding="async"
-                /><span>GitHub</span>
+                <img src="./IMG/GITHUB.png" alt="GitHub" width="52" height="52" loading="lazy" decoding="async" /><span>GitHub</span>
               </div>
             </div>
           </div>
@@ -533,7 +451,7 @@
       </section>
 
       <!-- ================= PROJECTS ================= -->
-      <section id="projects" class="py-8 md:py-12 scroll-mt-20">
+      <section id="projects" class="pt-8 md:pt-12 pb-8 md:pb-10 scroll-mt-20">
         <div class="w-full px-5 sm:px-[30px]">
           <div class="text-center">
             <span
@@ -549,9 +467,9 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group"
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
             >
-              <div class="h-[190px] bg-slate-200 overflow-hidden">
+              <div class="h-[190px] bg-white overflow-hidden">
                 <img
                   src="./IMG/GREENDEN.png"
                   alt="Greenden plant store preview"
@@ -559,7 +477,7 @@
                   height="190"
                   loading="lazy"
                   decoding="async"
-                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  class="w-full h-full object-cover object-top origin-top"
                 />
               </div>
               <div class="p-[22px] flex flex-col flex-1">
@@ -567,18 +485,9 @@
                   Greenden – Plant Store
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]"
-                    >HTML</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#cdf5fb]"
-                    >Tailwind CSS</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]"
-                    >JavaScript</span
-                  >
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]">HTML</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#cdf5fb]">Tailwind CSS</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]">JavaScript</span>
                 </div>
                 <p class="text-sm text-slate-500 mb-5 flex-1">
                   A responsive plant store website built using HTML, Tailwind
@@ -602,9 +511,9 @@
             </article>
 
             <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group"
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
             >
-              <div class="h-[190px] bg-slate-200 overflow-hidden">
+              <div class="h-[190px] bg-white overflow-hidden">
                 <img
                   src="./IMG/UDEMY.png"
                   alt="Udemy clone preview"
@@ -612,24 +521,15 @@
                   height="190"
                   loading="lazy"
                   decoding="async"
-                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  class="w-full h-full object-cover object-top origin-top"
                 />
               </div>
               <div class="p-[22px] flex flex-col flex-1">
                 <h3 class="text-lg font-bold text-navy mb-2">Udemy Clone</h3>
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]"
-                    >HTML</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0e6fb]"
-                    >CSS3</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]"
-                    >JavaScript</span
-                  >
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fde7d3]">HTML</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0e6fb]">CSS3</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#fdf3c8]">JavaScript</span>
                 </div>
                 <p class="text-sm text-slate-500 mb-5 flex-1">
                   A responsive Udemy clone built with HTML, CSS and JavaScript.
@@ -652,9 +552,9 @@
             </article>
 
             <article
-              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group md:col-span-2 xl:col-span-1"
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group md:col-span-2 xl:col-span-1"
             >
-              <div class="h-[190px] bg-slate-200 overflow-hidden">
+              <div class="h-[190px] bg-white overflow-hidden">
                 <img
                   src="./IMG/SMART.png"
                   alt="Smart attendance system preview"
@@ -662,7 +562,7 @@
                   height="190"
                   loading="lazy"
                   decoding="async"
-                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  class="w-full h-full object-cover object-top origin-top"
                 />
               </div>
               <div class="p-[22px] flex flex-col flex-1">
@@ -670,22 +570,10 @@
                   Smart Attendance System
                 </h3>
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0d5fb]"
-                    >React</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d4edd4]"
-                    >Node.js</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#e2e4df]"
-                    >Express.js</span
-                  >
-                  <span
-                    class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#a7eb9b]"
-                    >MongoDB</span
-                  >
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d0d5fb]">React</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#d4edd4]">Node.js</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#e2e4df]">Express.js</span>
+                  <span class="text-xs font-semibold px-3 py-1 rounded-lg text-slate-800 bg-[#a7eb9b]">MongoDB</span>
                 </div>
                 <p class="text-sm text-slate-500 mb-5 flex-1">
                   A web application to manage student attendance with reports
@@ -710,415 +598,490 @@
           </div>
         </div>
       </section>
-<!-- ================= CERTIFICATIONS ================= -->
-<section
-  id="certifications"
-  class="bg-white text-black py-8 md:py-12 scroll-mt-20"
->
-  <div class="w-full px-5 sm:px-[30px]">
 
-    <!-- Section Heading -->
-    <div class="text-center mb-8 md:mb-10">
-      <span
-        class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
+      <!-- ================= CERTIFICATIONS ================= -->
+      <section
+        id="certifications"
+        class="bg-white text-black pb-8 md:pb-10 scroll-mt-28"
       >
-        Certifications
-      </span>
-
-      <h2
-        class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-3"
-      >
-        My Certifications &amp; Achievements
-      </h2>
-
-      <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
-        Professional certifications, internship experiences, and technical
-        achievements.
-      </p>
-    </div>
-
-    <!-- Certification Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
-      <!-- Certificate 1: Web Development -->
-      <article
-        class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group"
-      >
-        <!-- Image Container -->
-        <a
-          href="./IMG/WEB%20%20DEVELOPMENT.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Web Development certificate"
-          class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-100 overflow-hidden"
-        >
-          <img
-            src="./IMG/webdevelopment.jpeg"
-            alt="Web Development Certificate"
-            loading="lazy"
-            decoding="async"
-            class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-
-          <div
-            class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-          ></div>
-
-          <span
-            class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-          >
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            Click to view credential
-          </span>
-        </a>
-
-        <!-- Certificate Details -->
-        <div class="p-6 flex flex-col flex-1">
-          <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-            <span
-              class="text-sm font-semibold uppercase tracking-wide text-fuchsia-500"
-            >
-              Internship &amp; Web Development
-            </span>
-
-            <span class="text-sm text-slate-500">
-              February 2025 – March 2025
-            </span>
-          </div>
-
-          <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-            Web Development Certificate
-          </h3>
-
-          <p class="text-purple-600 font-medium mb-4">
-            CodSoft
-          </p>
-
-          <p class="text-slate-600 text-[15px] leading-relaxed">
-            Completed a one-month internship in Web Development,
-            gaining practical experience in HTML, CSS, and JavaScript.
-          </p>
-        </div>
-      </article>
-
-      <!-- Certificate 2: HackerRank SQL Advanced -->
-      <article
-        class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group"
-      >
-        <!-- Image Container -->
-        <a
-          href="./IMG/SQL%20(ADVANCED).pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View HackerRank SQL Advanced certificate"
-          class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-100 overflow-hidden"
-        >
-          <img
-            src="./IMG/sql.jpg"
-            alt="HackerRank SQL Advanced Certificate"
-            loading="lazy"
-            decoding="async"
-            class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-
-          <div
-            class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-          ></div>
-
-          <span
-            class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-          >
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            Click to view credential
-          </span>
-        </a>
-
-        <!-- Certificate Details -->
-        <div class="p-6 flex flex-col flex-1">
-          <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-            <span
-              class="text-sm font-semibold uppercase tracking-wide text-fuchsia-500"
-            >
-              Database &amp; SQL
-            </span>
-
-            <span class="text-sm text-slate-500">
-              HackerRank
-            </span>
-          </div>
-
-          <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-            SQL (Advanced) Certificate
-          </h3>
-
-          <p class="text-purple-600 font-medium mb-4">
-            HackerRank
-          </p>
-
-          <p class="text-slate-600 text-[15px] leading-relaxed">
-            Demonstrated SQL skills through advanced database challenges,
-            including complex queries, joins, subqueries, and aggregation.
-          </p>
-        </div>
-      </article>
-
-      <!-- Certificate 3: HackerRank Java Basic -->
-      <article
-        class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/10 group md:col-span-2 xl:col-span-1"
-      >
-        <!-- Image Container -->
-        <a
-          href="./IMG/JAVA%20(BASIC).pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View HackerRank Java Basic certificate"
-          class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-100 overflow-hidden"
-        >
-          <img
-            src="./IMG/java.jpg"
-            alt="HackerRank Java Basic Certificate"
-            loading="lazy"
-            decoding="async"
-            class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-
-          <div
-            class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
-          ></div>
-
-          <span
-            class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
-          >
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            Click to view credential
-          </span>
-        </a>
-
-        <!-- Certificate Details -->
-        <div class="p-6 flex flex-col flex-1">
-          <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-            <span
-              class="text-sm font-semibold uppercase tracking-wide text-fuchsia-500"
-            >
-              Programming &amp; Software Development
-            </span>
-
-            <span class="text-sm text-slate-500">
-              HackerRank
-            </span>
-          </div>
-
-          <h3 class="text-xl font-bold text-navy leading-snug mb-3">
-            Java (Basic) Certificate
-          </h3>
-
-          <p class="text-purple-600 font-medium mb-4">
-            HackerRank
-          </p>
-
-          <p class="text-slate-600 text-[15px] leading-relaxed">
-            Demonstrated foundational Java programming skills, including
-            data types, control flow, object-oriented programming basics,
-            and problem-solving.
-          </p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-      <!-- ================= JOURNEY ================= -->
-      <section id="journey" class="pb-8 md:pb-12 scroll-mt-20">
         <div class="w-full px-5 sm:px-[30px]">
-          <span
-            class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-            >Journey</span
-          >
-          <h2
-            class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-6"
-          >
-            My Learning Journey
-          </h2>
+          <div class="text-center mb-8 md:mb-10">
+            <span
+              class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
+            >
+              Certifications
+            </span>
 
-          <ol
-            class="relative list-none before:content-[''] before:absolute before:left-[22px] before:top-[22px] before:bottom-[30px] before:w-0.5 before:bg-indigo-200"
-          >
-            <li class="grid grid-cols-[46px_1fr] gap-5 mb-8">
-              <div
-                class="relative z-[1] w-[46px] h-[46px] rounded-full bg-soft text-brand flex items-center justify-center text-[17px] border-2 border-indigo-100"
+            <h2
+              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-3"
+            >
+              My Certifications &amp; Achievements
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
+              Professional certifications, internship experiences, and
+              technical achievements.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Certificate 1 -->
+            <article
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
+            >
+              <a
+                href="./IMG/WEB%20%20DEVELOPMENT.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Web Development certificate"
+                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
               >
-                <i class="fa-solid fa-building-columns"></i>
-              </div>
-              <div>
-                <div class="text-sm font-medium text-brand">2021 - 2023</div>
-                <h4 class="text-base font-bold text-navy my-1">
-                  Higher Secondary Education
-                </h4>
-                <!-- FIXED: spacing after comma -->
-                <p class="text-sm text-slate-500">
-                  Sairam Matriculation Higher Secondary School, Thiruthuraipoondi,
-                  Tamil Nadu.
+                <img
+                  src="./IMG/webdevelopment.jpeg"
+                  alt="Web Development Certificate"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div
+                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Click to view credential
+                </span>
+              </a>
+
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
+                    Internship &amp; Web Development
+                  </span>
+                  <span class="text-sm text-slate-500">
+                    February 2025 – March 2025
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
+                  Web Development Certificate
+                </h3>
+                <p class="text-indigo-500 font-bold mb-4">CodSoft</p>
+                <p class="text-slate-600 text-[15px] leading-relaxed">
+                  Completed a one-month internship in Web Development, gaining
+                  practical experience in HTML, CSS, and JavaScript.
                 </p>
               </div>
-            </li>
-            <li class="grid grid-cols-[46px_1fr] gap-5 mb-8">
-              <div
-                class="relative z-[1] w-[46px] h-[46px] rounded-full bg-soft text-brand flex items-center justify-center text-[17px] border-2 border-indigo-100"
+            </article>
+
+            <!-- Certificate 2 -->
+            <article
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group"
+            >
+              <a
+                href="./IMG/SQL%20(ADVANCED).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View HackerRank SQL Advanced certificate"
+                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
               >
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <div>
-                <div class="text-sm font-medium text-brand">2023 - 2027</div>
-                <h4 class="text-base font-bold text-navy my-1">
-                  B.E Computer Science and Engineering
-                </h4>
-                <p class="text-sm text-slate-500">
-                  V.S.B College of Engineering Technical Campus, Coimbatore.
+                <img
+                  src="./IMG/sql.jpg"
+                  alt="HackerRank SQL Advanced Certificate"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div
+                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Click to view credential
+                </span>
+              </a>
+
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
+                    Database &amp; SQL
+                  </span>
+                  <span class="text-sm text-slate-500"> HackerRank </span>
+                </div>
+                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
+                  SQL(Intermediate)Certificate
+                </h3>
+                <p class="text-indigo-500 font-bold mb-4">HackerRank</p>
+                <p class="text-slate-600 text-[15px] leading-relaxed">
+                  Demonstrated SQL skills through advanced database challenges,
+                  including complex queries, joins, subqueries, and
+                  aggregation.
                 </p>
               </div>
-            </li>
-            <li class="grid grid-cols-[46px_1fr] gap-5">
-              <div
-                class="relative z-[1] w-[46px] h-[46px] rounded-full bg-soft text-brand flex items-center justify-center text-[17px] border-2 border-indigo-100"
+            </article>
+
+            <!-- Certificate 3 -->
+            <article
+              class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/20 hover:border-indigo-200 group md:col-span-2 xl:col-span-1"
+            >
+              <a
+                href="./IMG/JAVA%20(BASIC).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View HackerRank Java Basic certificate"
+                class="relative flex items-center justify-center h-[220px] sm:h-[240px] w-full bg-slate-900 overflow-hidden"
               >
-                <i class="fa-solid fa-laptop-code"></i>
-              </div>
-              <div>
-                <!-- FIXED: year corrected to 2026 -->
-                <div class="text-sm font-medium text-brand">2026 - Present</div>
-                <h4 class="text-base font-bold text-navy my-1">
-                  Full Stack Development Journey
-                </h4>
-                <!-- FIXED: spacing typo -->
-                <p class="text-sm text-slate-500">
-                  Learning HTML, CSS, Tailwind CSS, JavaScript, React, Node.js,
-                  MongoDB and building real-world projects.
+                <img
+                  src="./IMG/java.jpg"
+                  alt="HackerRank Java Basic Certificate"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div
+                  class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-4 left-4 inline-flex items-center gap-2 bg-black/85 text-white text-sm font-semibold px-4 py-2 rounded-full"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Click to view credential
+                </span>
+              </a>
+
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+                  <span class="text-sm font-bold uppercase tracking-wide text-indigo-500">
+                    Programming
+                  </span>
+                  <span class="text-sm text-slate-500"> HackerRank </span>
+                </div>
+                <h3 class="text-xl font-bold text-navy leading-snug mb-3">
+                  Java (Basic) Certificate
+                </h3>
+                <p class="text-indigo-500 font-bold mb-4">HackerRank</p>
+                <p class="text-slate-600 text-[15px] leading-relaxed">
+                  Demonstrated foundational Java programming skills, including
+                  data types, control flow, object-oriented programming
+                  basics, and problem-solving.
                 </p>
               </div>
-            </li>
-          </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= JOURNEY ================= -->
+      <section
+        id="journey"
+        class="bg-gradient-to-b from-white to-soft pb-4 md:pb-6 scroll-mt-28"
+      >
+        <div class="w-full px-5 sm:px-[30px]">
+          <div class="text-center mb-8 md:mb-10">
+            <span
+              class="block text-[13px] font-semibold tracking-[0.3em] uppercase text-brand mb-2"
+              >Journey</span
+            >
+            <h2
+              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-3"
+            >
+              My Learning Journey
+            </h2>
+            <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
+              From school to full stack development – a journey of continuous
+              learning, growth and building real-world skills.
+            </p>
+            <div
+              class="flex items-center justify-center gap-2 mt-5"
+              aria-hidden="true"
+            >
+              <span class="w-14 h-0.5 bg-brand/70 rounded"></span>
+              <span class="w-2 h-2 rounded-full bg-brand"></span>
+              <span class="w-14 h-0.5 bg-brand/70 rounded"></span>
+            </div>
+          </div>
+
+          <div class="relative max-w-6xl mx-auto">
+            <div
+              class="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 border-l-2 border-dashed border-indigo-200"
+              aria-hidden="true"
+            ></div>
+
+            <ol
+              class="list-none grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-0"
+            >
+              <!-- 01 : left -->
+              <li class="relative md:col-start-1 md:row-start-1 md:mb-6">
+                <div
+                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
+                >
+                  <div
+                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-white overflow-hidden flex items-center justify-center p-3"
+                  >
+                    <img
+                      src="./IMG/SRM.jpg"
+                      alt="Sairam Matriculation Higher Secondary School logo"
+                      width="140"
+                      height="110"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-[140px] h-auto mx-auto mb-[18px] object-contain [clip-path:inset(6%_0_6%_0)]"
+                    />
+                  </div>
+                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
+                    <span
+                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
+                      >01</span
+                    >
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm sm:text-base font-semibold text-brand">
+                        2021 – 2023
+                      </div>
+                      <h4
+                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
+                      >
+                        Higher Secondary Education
+                      </h4>
+                      <p class="text-sm text-slate-500 mb-3">
+                        Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
+                      >
+                        <i class="fa-solid fa-building-columns"></i> School
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="hidden md:flex absolute top-1/2 -right-8 translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <span class="w-4 h-4 rounded-full bg-brand"></span>
+                </span>
+              </li>
+
+              <!-- 02 : right (staggered) -->
+              <li class="relative md:col-start-2 md:row-start-2 md:-mt-6 md:mb-6">
+                <div
+                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
+                >
+                  <div
+                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-white overflow-hidden flex items-center justify-center p-3"
+                  >
+                    <img
+                      src="./IMG/VSB.jpg"
+                      alt="V.S.B College of Engineering Technical Campus logo"
+                      width="128"
+                      height="128"
+                      loading="lazy"
+                      decoding="async"
+                      class="block w-full h-full object-contain"
+                    />
+                  </div>
+                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
+                    <span
+                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
+                      >02</span
+                    >
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm sm:text-base font-semibold text-brand">
+                        2023 – 2027
+                      </div>
+                      <h4
+                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
+                      >
+                        B.E Computer Science and Engineering
+                      </h4>
+                      <p class="text-sm text-slate-500 mb-3">
+                        V.S.B College of Engineering Technical Campus, Coimbatore.
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
+                      >
+                        <i class="fa-solid fa-graduation-cap"></i> College
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="hidden md:flex absolute top-1/2 -left-8 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <span class="w-4 h-4 rounded-full bg-brand"></span>
+                </span>
+              </li>
+
+              <!-- 03 : left -->
+              <li class="relative md:col-start-1 md:row-start-3 md:-mt-6">
+                <div
+                  class="relative bg-white border border-line rounded-3xl p-5 sm:p-6 shadow-lg shadow-brand/5 flex flex-col lg:flex-row items-center gap-4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
+                >
+                  <div
+                    class="order-first lg:order-last shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 overflow-hidden flex items-center justify-center p-3"
+                  >
+                    <img
+                      src="./IMG/client-logo-2.png"
+                      alt="MERN stack technologies"
+                      width="104"
+                      height="104"
+                      loading="lazy"
+                      decoding="async"
+                      class="block w-full h-full object-contain"
+                    />
+                  </div>
+                  <div class="flex w-full lg:flex-1 min-w-0 items-start gap-4">
+                    <span
+                      class="shrink-0 w-10 h-10 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shadow-md shadow-brand/30"
+                      >03</span
+                    >
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm sm:text-base font-semibold text-brand">
+                        2026 – Present
+                      </div>
+                      <h4
+                        class="text-base sm:text-lg font-extrabold text-navy my-1 leading-snug"
+                      >
+                        Full Stack Development Journey
+                      </h4>
+                      <p class="text-sm text-slate-500 mb-3">
+                        Learning HTML, CSS, Tailwind CSS, JavaScript, React, NodeJs, ExpressJs, MongoDB and building real-world projects.
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand text-[13px] font-medium"
+                      >
+                        <i class="fa-solid fa-laptop"></i> Learning &amp; Building
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="hidden md:flex absolute top-1/2 -right-8 translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-indigo-100 items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <span class="w-4 h-4 rounded-full bg-brand"></span>
+                </span>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
       <!-- ================= CONTACT ================= -->
       <section id="contact" class="bg-soft py-8 md:py-12 scroll-mt-20">
-        <div
-          class="w-full px-5 sm:px-[30px] grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 items-start"
-        >
-          <div>
-            <span
-              class="block text-[13px] font-semibold tracking-wider uppercase text-brand mb-2"
-              >Contact</span
-            >
-            <h2
-              class="text-[26px] md:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-5 lg:mb-6"
-            >
-              Get in Touch
-            </h2>
+        <div class="w-full px-5 sm:px-[30px]">
+          <div
+            class="relative overflow-hidden bg-gradient-to-br from-white via-[#f7f8ff] to-indigo-50 border border-line rounded-[28px] shadow-xl shadow-brand/10 p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center"
+          >
+            <div class="pointer-events-none absolute -top-16 left-1/3 w-64 h-64 rounded-full bg-indigo-100/60 blur-2xl" aria-hidden="true"></div>
 
-            <div class="grid gap-[22px] mt-2.5">
-              <div class="flex gap-4 items-center">
-                <div
-                  class="w-[46px] h-[46px] shrink-0 rounded-xl bg-brand text-white flex items-center justify-center text-[17px] shadow-lg shadow-brand/25"
-                >
-                  <i class="fa-solid fa-envelope"></i>
+            <!-- LEFT -->
+            <div class="relative">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-[13px] font-semibold tracking-wider uppercase text-brand">Contact</span>
+                <span class="w-8 h-0.5 bg-brand rounded"></span>
+              </div>
+              <h2 class="text-[34px] sm:text-[44px] font-extrabold text-navy tracking-tight leading-tight mb-3">
+                Get in <span class="text-brand">Touch</span>
+              </h2>
+              <p class="text-[15px] text-slate-600 max-w-[430px] mb-6">
+                I'm always open to discussing new opportunities, interesting
+                projects or just having a conversation about technology.
+              </p>
+
+              <div class="grid gap-4 max-w-[430px]">
+                <div class="flex gap-4 items-center">
+                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-[20px]">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <strong class="block text-sm text-navy">Email</strong>
+                    <span class="text-sm text-slate-500 break-all">santhoshkathirkk@gmail.com</span>
+                  </div>
                 </div>
-                <div class="min-w-0">
-                  <strong class="block text-sm text-navy">Email</strong
-                  ><span class="text-sm text-slate-500 break-words"
-                    >santhoshkathirkk@gmail.com</span
-                  >
+                <div class="flex gap-4 items-center">
+                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-[20px]">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-sm text-navy">Phone</strong>
+                    <span class="text-sm text-slate-500">+91 9342214070</span>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-center">
+                  <div class="w-[52px] h-[52px] shrink-0 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center text-[20px]">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-sm text-navy">Location</strong>
+                    <span class="text-sm text-slate-500">Coimbatore, Tamil Nadu, India</span>
+                  </div>
                 </div>
               </div>
-              <div class="flex gap-4 items-center">
-                <div
-                  class="w-[46px] h-[46px] shrink-0 rounded-xl bg-brand text-white flex items-center justify-center text-[17px] shadow-lg shadow-brand/25"
-                >
-                  <i class="fa-solid fa-phone"></i>
-                </div>
-                <div>
-                  <strong class="block text-sm text-navy">Phone</strong
-                  ><span class="text-sm text-slate-500">+91 9342214070</span>
-                </div>
+
+              <hr class="border-line my-6 max-w-[430px]" />
+
+              <p class="font-bold text-navy text-sm">Connect With Me</p>
+              <div class="flex gap-[18px] text-[22px] mt-3">
+                <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
+                  class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
+                  class="text-[#0a66c2] transition hover:-translate-y-[3px]"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
+                  class="text-[#e1306c] transition hover:-translate-y-[3px]"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
+                  class="text-ink transition hover:-translate-y-[3px] hover:text-brand"><i class="fa-solid fa-envelope"></i></a>
               </div>
-              <div class="flex gap-4 items-center">
-                <div
-                  class="w-[46px] h-[46px] shrink-0 rounded-xl bg-brand text-white flex items-center justify-center text-[17px] shadow-lg shadow-brand/25"
-                >
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div>
-                  <strong class="block text-sm text-navy">Location</strong
-                  ><span class="text-sm text-slate-500"
-                    >Coimbatore, Tamil Nadu, India</span
-                  >
-                </div>
+
+              <div class="hidden xl:flex absolute right-0 bottom-0 w-[250px] h-[250px] items-center justify-center" aria-hidden="true">
+                <div class="absolute inset-4 rounded-full bg-indigo-100/70"></div>
+                <i class="fa-solid fa-envelope-open-text relative text-[110px] text-brand drop-shadow-xl"></i>
+                <i class="fa-solid fa-paper-plane absolute -top-6 right-2 text-[44px] text-indigo-400 -rotate-12"></i>
               </div>
             </div>
 
-            <p class="font-bold text-navy mt-6 text-sm">Connect With Me</p>
-            <div class="flex gap-[18px] text-[22px] mt-3">
-              <a
-                href="https://github.com/SANTHOSH0530"
-                target="_blank"
-                rel="noopener"
-                aria-label="GitHub"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/in/santhoshrajk"
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                class="text-[#0a66c2] transition hover:-translate-y-[3px]"
-                ><i class="fa-brands fa-linkedin"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/_santhosh._k/"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                class="text-[#e1306c] transition hover:-translate-y-[3px]"
-                ><i class="fa-brands fa-instagram"></i
-              ></a>
-              <a
-                href="mailto:santhoshkathirkk@gmail.com"
-                aria-label="Email"
-                class="text-ink transition hover:-translate-y-[3px] hover:text-brand"
-                ><i class="fa-solid fa-envelope"></i
-              ></a>
+            <!-- RIGHT : form -->
+            <div class="relative bg-white border border-line rounded-3xl shadow-lg shadow-brand/5 p-5 sm:p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 shrink-0 rounded-full bg-indigo-50 text-brand flex items-center justify-center text-[22px]">
+                  <i class="fa-solid fa-comment-dots"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-navy leading-tight">Send Me a Message</h3>
+                  <p class="text-[13px] sm:text-sm text-slate-500">
+                    Fill out the form below and I'll get back to you as soon as possible.
+                  </p>
+                </div>
+              </div>
+
+              <form id="contactForm" class="grid gap-3.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div class="relative">
+                    <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
+                    <input type="text" id="name" name="name" autocomplete="name" aria-label="Your name" placeholder="Your Name" required class="field pl-11" />
+                  </div>
+                  <div class="relative">
+                    <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
+                    <input type="email" id="email" name="email" autocomplete="email" aria-label="Your email" placeholder="Your Email" required class="field pl-11" />
+                  </div>
+                </div>
+                <div class="relative">
+                  <i class="fa-regular fa-file-lines absolute left-4 top-1/2 -translate-y-1/2 text-brand"></i>
+                  <input type="text" id="subject" name="subject" aria-label="Subject" placeholder="Subject (Optional)" class="field pl-11" />
+                </div>
+                <div class="relative">
+                  <i class="fa-regular fa-message absolute left-4 top-4 text-brand"></i>
+                  <textarea id="message" name="message" aria-label="Your message" placeholder="Your Message" required class="field pl-11 min-h-[150px] resize-y"></textarea>
+                </div>
+                <button type="submit"
+                  class="w-full py-[15px] rounded-xl bg-gradient-to-r from-indigo-500 to-brand text-white font-semibold text-[15px] shadow-lg shadow-brand/30 transition hover:-translate-y-0.5 hover:shadow-xl">
+                  <i class="fa-solid fa-paper-plane"></i> Send Message
+                </button>
+              </form>
             </div>
           </div>
-
-          <form id="contactForm" class="grid gap-3.5">
-            <input
-              type="text"
-              id="name"
-              placeholder="Your Name"
-              required
-              class="field"
-            />
-            <input
-              type="email"
-              id="email"
-              placeholder="Your Email"
-              required
-              class="field"
-            />
-            <textarea
-              id="message"
-              placeholder="Your Message"
-              required
-              class="field min-h-[130px] resize-y"
-            ></textarea>
-            <button
-              type="submit"
-              class="w-full py-[15px] rounded-[10px] bg-brand text-white font-semibold text-[15px] transition hover:bg-brand-dark hover:-translate-y-0.5"
-            >
-              <i class="fa-solid fa-paper-plane"></i> Send Message
-            </button>
-          </form>
         </div>
       </section>
     </main>
@@ -1131,60 +1094,60 @@
         <p class="text-[13px]">&copy; 2026 Santhoshraj. All rights reserved.</p>
 
         <div class="flex gap-4 text-[17px]">
-          <a
-            href="https://github.com/SANTHOSH0530"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            class="transition hover:text-white hover:-translate-y-0.5"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/santhoshrajk"
-            target="_blank"
-            rel="noopener"
-            aria-label="LinkedIn"
-            class="transition hover:text-white hover:-translate-y-0.5"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-          <a
-            href="https://www.instagram.com/_santhosh._k/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-            class="transition hover:text-white hover:-translate-y-0.5"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a
-            href="mailto:santhoshkathirkk@gmail.com"
-            aria-label="Email"
-            class="transition hover:text-white hover:-translate-y-0.5"
-            ><i class="fa-solid fa-envelope"></i
-          ></a>
+          <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"
+            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"
+            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"
+            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-brands fa-instagram"></i></a>
+          <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"
+            class="transition hover:text-white hover:-translate-y-0.5"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </footer>
 
     <script>
-      // Mobile menu
+      // Mobile side drawer (1000ms slide)
       const menuBtn = document.getElementById("menuBtn");
+      const menuClose = document.getElementById("menuClose");
       const navLinks = document.getElementById("navLinks");
-      menuBtn.addEventListener("click", () => {
-        const open = navLinks.classList.toggle("hidden") === false;
-        navLinks.classList.toggle("flex", open);
+      const navOverlay = document.getElementById("navOverlay");
+
+      // Animations are OFF on page load / resize, so the drawer never
+      // flashes or slides on its own. They turn ON only when the user opens it.
+      const navAnim = ["transition-[transform,visibility]", "duration-[1000ms]", "ease-in-out"];
+      const overlayAnim = ["transition-opacity", "duration-[1000ms]", "ease-in-out"];
+      function setAnim(on) {
+        navLinks.classList.toggle("transition-none", !on);
+        navOverlay.classList.toggle("transition-none", !on);
+        navAnim.forEach((c) => navLinks.classList.toggle(c, on));
+        overlayAnim.forEach((c) => navOverlay.classList.toggle(c, on));
+        void navLinks.offsetWidth; // apply instantly
+      }
+
+      function setMenu(open) {
+        if (open) setAnim(true);
+        navLinks.classList.toggle("translate-x-full", !open);
+        navLinks.classList.toggle("invisible", !open);
+        navOverlay.classList.toggle("opacity-0", !open);
+        navOverlay.classList.toggle("pointer-events-none", !open);
         menuBtn.setAttribute("aria-expanded", open);
-      });
+        document.documentElement.style.overflow = open ? "hidden" : "";
+      }
+      menuBtn.addEventListener("click", () => setMenu(true));
+      menuClose.addEventListener("click", () => setMenu(false));
+      navOverlay.addEventListener("click", () => setMenu(false));
       navLinks.querySelectorAll("a").forEach((a) =>
         a.addEventListener("click", () => {
-          if (innerWidth < 768) {
-            navLinks.classList.add("hidden");
-            navLinks.classList.remove("flex");
-            menuBtn.setAttribute("aria-expanded", "false");
-          }
+          if (innerWidth < 768) setMenu(false);
         }),
       );
+      addEventListener("resize", () => {
+        setAnim(false);
+        setMenu(false);
+      });
 
-      // Seamless skills marquee: clone the set once (instead of 20 hand-written items)
+      // Seamless skills marquee
       const track = document.getElementById("skillTrack");
       [...track.children].forEach((el) => {
         const c = el.cloneNode(true);
@@ -1193,8 +1156,8 @@
         track.appendChild(c);
       });
 
-      // Active nav link using IntersectionObserver (no scroll-event spam)
-      const anchors = [...navLinks.querySelectorAll("a")];
+      // Active nav link using IntersectionObserver
+      const anchors = [...navLinks.querySelectorAll("a.nav-a")];
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -1211,7 +1174,7 @@
       );
       document.querySelectorAll("section[id]").forEach((s) => io.observe(s));
 
-      // Pause marquee when it's off-screen (saves CPU/GPU)
+      // Pause marquee when off-screen
       new IntersectionObserver(([e]) => {
         track.style.animationPlayState = e.isIntersecting ? "" : "paused";
       }).observe(track);
@@ -1222,7 +1185,10 @@
         const name = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const message = document.getElementById("message").value;
-        const subject = encodeURIComponent("Portfolio contact from " + name);
+        const customSubject = document.getElementById("subject").value.trim();
+        const subject = encodeURIComponent(
+          customSubject || "Portfolio contact from " + name,
+        );
         const body = encodeURIComponent(
           message + "\n\nFrom: " + name + " (" + email + ")",
         );
