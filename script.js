@@ -69,7 +69,6 @@ const sectionObserver = new IntersectionObserver(
   },
   { rootMargin: "-40% 0px -55% 0px" }
 );
-
 document.querySelectorAll("section[id]").forEach((section) => {
   sectionObserver.observe(section);
 });
