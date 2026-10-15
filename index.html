@@ -9,12 +9,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SANTHOSHRAJ | Full Stack Developer" />
     <meta property="og:description" content="Santhoshraj - Full Stack Developer portfolio" />
-    <meta property="og:image" content="./IMG/PHOTO.webp"/>
+    <meta property="og:image" content="./IMG/PHOTO.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preload" as="image" href="./IMG/PHOTO.webp" fetchpriority="high" />
 
-    <link rel="icon" type="image/png" sizes="64x64" href="./IMG/favicon.webp" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./IMG/apple-touch-icon.webp" />
+    <link rel="icon" type="image/webp" sizes="64x64" href="./IMG/favicon.webp" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./IMG/apple-touch-icon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,17 +26,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <!-- ================= NAVBAR ================= -->
     <header class="site-header">
       <div class="header-inner">
         <a href="#home" class="logo">Santhosh<span>raj</span></a>
-        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+
         <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
+
         <ul id="navLinks" class="nav-links">
           <li class="nav-close-item">
             <button id="menuClose" class="nav-close" aria-label="Close menu">
@@ -51,8 +52,15 @@
           <li><a href="#journey" class="nav-a"><i class="fa-solid fa-route"></i>Journey</a></li>
           <li><a href="#contact" class="nav-a"><i class="fa-solid fa-envelope"></i>Contact</a></li>
         </ul>
+
+        <div class="header-actions">
+          <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
       </div>
     </header>
+
     <main>
       <!-- ================= HERO ================= -->
       <section id="home" class="hero">
@@ -66,11 +74,13 @@
               I build modern, responsive and user-friendly web applications
               using HTML, CSS, JavaScript, React, Node.js and MongoDB.
             </p>
+
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">View My Projects <i class="fa-solid fa-arrow-right"></i></a>
               <a href="#contact" class="btn btn-outline">Contact Me</a>
-              <a href="./resume/SANTHOSHRAJ_Resume.pdf" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Download Resume</a>
+              <a href="" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Download Resume</a>
             </div>
+
             <div class="socials">
               <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
               <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link social-link--linkedin"><i class="fa-brands fa-linkedin"></i></a>
@@ -78,6 +88,7 @@
               <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email" class="social-link"><i class="fa-solid fa-envelope"></i></a>
             </div>
           </div>
+
           <!-- center photo -->
           <div class="hero-photo">
             <div class="blob"></div>
@@ -90,11 +101,13 @@
               decoding="async"
             />
           </div>
+
           <!-- right -->
           <div class="hero-right">
             <p class="eyebrow">Turning ideas into real projects</p>
             <h2 class="hero-title">Clean Code.<br /><span class="accent">Creative Solutions.</span></h2>
             <p class="hero-text">Constantly learning and building projects to solve real-world problems.</p>
+
             <div class="hero-stats">
               <div class="stat stat--divider"><strong>10+</strong><small>Projects Built</small></div>
               <div class="stat stat--divider"><strong>DSA</strong><small>Problem Solving</small></div>
@@ -103,6 +116,7 @@
           </div>
         </div>
       </section>
+
       <!-- ================= ABOUT ================= -->
       <section id="about" class="section section--soft">
         <div class="about-grid">
@@ -122,6 +136,7 @@
               <li><i class="fa-solid fa-envelope"></i><span class="break-all"><strong>Email:</strong> santhoshkathirkk@gmail.com</span></li>
             </ul>
           </div>
+
           <div class="edu-grid">
             <div class="edu-card">
               <div class="edu-label">School</div>
@@ -138,6 +153,7 @@
               <p class="edu-loc">Tamil Nadu, India</p>
               <span class="badge badge--amber">H.S.C</span>
             </div>
+
             <div class="edu-card">
               <div class="edu-label">College</div>
               <img
@@ -157,11 +173,13 @@
           </div>
         </div>
       </section>
+
       <!-- ================= SKILLS ================= -->
       <section id="skills" class="section section--soft section--tight-top">
         <div class="wrap skills-section">
           <span class="eyebrow">Skills</span>
           <h2 class="section-title">My Skills &amp; Technologies</h2>
+
           <div class="skills-marquee">
             <div id="skillTrack" class="skill-track">
               <div class="skill"><img src="./IMG/HTML.webp" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span></div>
@@ -178,6 +196,7 @@
           </div>
         </div>
       </section>
+
       <!-- ================= PROJECTS ================= -->
       <section id="projects" class="section">
         <div class="wrap">
@@ -185,6 +204,7 @@
             <span class="eyebrow">Projects</span>
             <h2 class="section-title">My Recent Projects</h2>
           </div>
+
           <div class="card-grid">
             <article class="item-card">
               <div class="project-img">
@@ -206,6 +226,7 @@
                 </div>
               </div>
             </article>
+
             <article class="item-card">
               <div class="project-img">
                 <img src="./IMG/UDEMY.webp" alt="Udemy clone preview" width="400" height="190" loading="lazy" decoding="async" />
@@ -226,6 +247,7 @@
                 </div>
               </div>
             </article>
+
             <article class="item-card card-wide">
               <div class="project-img">
                 <img src="./IMG/SMART.webp" alt="Smart attendance system preview" width="400" height="190" loading="lazy" decoding="async" />
@@ -250,6 +272,7 @@
           </div>
         </div>
       </section>
+
       <!-- ================= CERTIFICATIONS ================= -->
       <section id="certifications" class="section section--certs section--tight-top">
         <div class="wrap">
@@ -258,6 +281,7 @@
             <h2 class="section-title section-title--sm">My Certifications &amp; Achievements</h2>
             <p class="section-sub">Professional certifications, internship experiences, and technical achievements.</p>
           </div>
+
           <div class="card-grid">
             <article class="item-card">
               <a href="./IMG/WEB%20%20DEVELOPMENT.pdf" target="_blank" rel="noopener noreferrer" aria-label="View Web Development certificate" class="cert-media">
@@ -275,6 +299,7 @@
                 <p class="cert-text">Completed a one-month internship in Web Development, gaining practical experience in HTML, CSS, and JavaScript.</p>
               </div>
             </article>
+
             <article class="item-card">
               <a href="./IMG/SQL.pdf" target="_blank" rel="noopener noreferrer" aria-label="View HackerRank SQL Advanced certificate" class="cert-media">
                 <img src="./IMG/sql.webp" alt="HackerRank SQL Advanced Certificate" loading="lazy" decoding="async" />
@@ -291,6 +316,7 @@
                 <p class="cert-text">Demonstrated SQL skills through advanced database challenges, including complex queries, joins, subqueries, and aggregation.</p>
               </div>
             </article>
+
             <article class="item-card card-wide">
               <a href="./IMG/JAVA%20(BASIC).pdf" target="_blank" rel="noopener noreferrer" aria-label="View HackerRank Java Basic certificate" class="cert-media">
                 <img src="./IMG/java.webp" alt="HackerRank Java Basic Certificate" loading="lazy" decoding="async" />
@@ -310,6 +336,7 @@
           </div>
         </div>
       </section>
+
       <!-- ================= JOURNEY ================= -->
       <section id="journey" class="journey-section">
         <div class="wrap">
@@ -326,8 +353,10 @@
               <span class="divider-line"></span>
             </div>
           </div>
+
           <div class="timeline">
             <div class="timeline-line" aria-hidden="true"></div>
+
             <ol class="timeline-list">
               <!-- 01 : left -->
               <li class="tl-item tl-1">
@@ -347,6 +376,7 @@
                 </div>
                 <span class="tl-dot tl-dot--right" aria-hidden="true"></span>
               </li>
+
               <!-- 02 : right -->
               <li class="tl-item tl-2">
                 <div class="tl-card">
@@ -365,6 +395,7 @@
                 </div>
                 <span class="tl-dot tl-dot--left" aria-hidden="true"></span>
               </li>
+
               <!-- 03 : left -->
               <li class="tl-item tl-3">
                 <div class="tl-card">
@@ -387,11 +418,13 @@
           </div>
         </div>
       </section>
+
       <!-- ================= CONTACT ================= -->
       <section id="contact" class="section section--soft">
         <div class="wrap">
           <div class="contact-card">
             <div class="contact-glow" aria-hidden="true"></div>
+
             <!-- LEFT -->
             <div class="contact-left">
               <div class="eyebrow-row">
@@ -403,10 +436,12 @@
                 I'm always open to discussing new opportunities, interesting
                 projects or just having a conversation about technology.
               </p>
+
               <!-- Resume download -->
-              <a href="./resume/SANTHOSHRAJ_Resume.pdf" download class="btn btn-ghost contact-resume">
+              <a href="" download class="btn btn-ghost contact-resume">
                 <i class="fa-solid fa-download"></i> Download Resume
               </a>
+
               <div class="contact-list">
                 <div class="contact-item">
                   <div class="contact-icon contact-icon--red"><i class="fa-solid fa-envelope"></i></div>
@@ -430,7 +465,9 @@
                   </div>
                 </div>
               </div>
+
               <hr class="contact-hr" />
+
               <p class="connect-label">Connect With Me</p>
               <div class="socials socials--contact">
                 <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
@@ -438,12 +475,14 @@
                 <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link social-link--instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email" class="social-link"><i class="fa-solid fa-envelope"></i></a>
               </div>
+
               <div class="contact-deco" aria-hidden="true">
                 <div class="deco-circle"></div>
                 <i class="fa-solid fa-envelope-open-text deco-main"></i>
                 <i class="fa-solid fa-paper-plane deco-plane"></i>
               </div>
             </div>
+
             <!-- RIGHT : form -->
             <div class="form-card">
               <div class="form-head">
@@ -453,6 +492,7 @@
                   <p class="form-sub">Fill out the form below and I'll get back to you as soon as possible.</p>
                 </div>
               </div>
+
               <form id="contactForm" class="contact-form">
                 <div class="form-row">
                   <div class="field-wrap">
@@ -481,10 +521,12 @@
         </div>
       </section>
     </main>
+
     <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="copyright">&copy; 2026 Santhoshraj. All rights reserved.</p>
+
         <div class="footer-socials">
           <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="footer-link"><i class="fa-brands fa-github"></i></a>
           <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
@@ -493,6 +535,18 @@
         </div>
       </div>
     </footer>
+
+    <!-- ================= WHATSAPP ================= -->
+    <a
+      href="https://wa.me/919342214070"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat with me on WhatsApp"
+      class="whatsapp-float"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <script src="script.js"></script>
   </body>
 </html>
