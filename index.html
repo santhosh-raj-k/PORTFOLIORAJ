@@ -5,49 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SANTHOSHRAJ | Full Stack Developer</title>
     <meta name="description" content="Santhoshraj - Full Stack Developer portfolio" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SANTHOSHRAJ | Full Stack Developer" />
+    <meta property="og:description" content="Santhoshraj - Full Stack Developer portfolio" />
+    <meta property="og:image" content="./IMG/PHOTO%201.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" as="image" href="./IMG/PHOTO%201.webp" fetchpriority="high" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Poppins: render-block aagaama load aagum -->
     <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-      />
-    </noscript>
-    <!-- Font Awesome: render-block aagaama load aagum -->
     <link
-      rel="preload"
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      />
-    </noscript>
+
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <!-- ================= NAVBAR ================= -->
     <header class="site-header">
-      <div class="nav-bar">
-        <a href="#home" class="logo">Santhosh<span class="accent">raj</span></a>
+      <div class="header-inner">
+        <a href="#home" class="logo">Santhosh<span>raj</span></a>
+
         <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
-        <!-- overlay (small screens) -->
+
         <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
-        <!-- side drawer on small screens, normal row on md+ -->
+
         <ul id="navLinks" class="nav-links">
           <li class="nav-close-item">
             <button id="menuClose" class="nav-close" aria-label="Close menu">
@@ -64,63 +55,70 @@
         </ul>
       </div>
     </header>
+
     <main>
       <!-- ================= HERO ================= -->
       <section id="home" class="hero">
-        <div class="hero-inner">
+        <div class="hero-grid">
           <!-- left -->
-          <div class="hero-text">
-            <p class="hi">Hi, I'm</p>
+          <div class="hero-left">
+            <p class="hero-greet">Hi, I'm</p>
             <h1 class="hero-name">Santhosh<span class="accent">raj</span></h1>
             <p class="hero-role">A <span class="accent">Full Stack Developer</span></p>
             <p class="hero-desc">
               I build modern, responsive and user-friendly web applications
               using HTML, CSS, JavaScript, React, Node.js and MongoDB.
             </p>
-            <div class="btn-row">
+
+            <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">View My Projects <i class="fa-solid fa-arrow-right"></i></a>
               <a href="#contact" class="btn btn-outline">Contact Me</a>
+              <a href="./resume/SANTHOSHRAJ_Resume.pdf" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Download Resume</a>
             </div>
-            <div class="social-row">
-              <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-              <a class="li" href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-              <a class="ig" href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-              <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+
+            <div class="socials">
+              <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link social-link--linkedin"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link social-link--instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email" class="social-link"><i class="fa-solid fa-envelope"></i></a>
             </div>
           </div>
+
           <!-- center photo -->
           <div class="hero-photo">
             <div class="blob"></div>
             <img
-              src="./IMG/PHOTO 1.webp"
+              src="./IMG/PHOTO%201.webp"
               alt="Santhoshraj profile photo"
               width="265"
               height="265"
               fetchpriority="high"
               decoding="async"
-              class="profile"
             />
           </div>
+
           <!-- right -->
           <div class="hero-right">
-            <p class="tagline">Turning ideas into real projects</p>
+            <p class="eyebrow">Turning ideas into real projects</p>
             <h2 class="hero-title">Clean Code.<br /><span class="accent">Creative Solutions.</span></h2>
-            <p class="hero-sub">Constantly learning and building projects to solve real-world problems.</p>
-            <div class="stats">
-              <div class="stat"><strong>10+</strong><small>Projects Built</small></div>
-              <div class="stat"><strong>DSA</strong><small>Problem Solving</small></div>
-              <div class="stat stat-last"><strong>MERN</strong><small>Stack Learning</small></div>
+            <p class="hero-text">Constantly learning and building projects to solve real-world problems.</p>
+
+            <div class="hero-stats">
+              <div class="stat stat--divider"><strong>10+</strong><small>Projects Built</small></div>
+              <div class="stat stat--divider"><strong>DSA</strong><small>Problem Solving</small></div>
+              <div class="stat"><strong>MERN</strong><small>Stack Learning</small></div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- ================= ABOUT ================= -->
-      <section id="about" class="about">
-        <div class="container about-grid">
+      <section id="about" class="section section--soft">
+        <div class="about-grid">
           <div>
             <span class="eyebrow">About Me</span>
             <h2 class="section-title">Get to Know Me</h2>
-            <p class="about-desc">
+            <p class="lead">
               I'm Santhoshraj, a Computer Science student passionate about web
               development, problem solving and building real-world projects. I
               love learning new technologies and creating applications that make
@@ -130,26 +128,28 @@
               <li><i class="fa-regular fa-user"></i><span><strong>Name:</strong> SANTHOSHRAJ</span></li>
               <li><i class="fa-solid fa-graduation-cap"></i><span><strong>Education:</strong> B.E Computer Science and Engineering</span></li>
               <li><i class="fa-solid fa-location-dot"></i><span><strong>Location:</strong> Coimbatore, Tamil Nadu, India</span></li>
-              <li><i class="fa-solid fa-envelope"></i><span class="break"><strong>Email:</strong> santhoshkathirkk@gmail.com</span></li>
+              <li><i class="fa-solid fa-envelope"></i><span class="break-all"><strong>Email:</strong> santhoshkathirkk@gmail.com</span></li>
             </ul>
           </div>
+
           <div class="edu-grid">
-            <div class="card edu-card">
+            <div class="edu-card">
               <div class="edu-label">School</div>
               <img
                 src="./IMG/SRM.webp"
                 alt="Sairam Matriculation Higher Secondary School logo"
                 width="140"
-                height="140"
+                height="110"
                 loading="lazy"
                 decoding="async"
-                class="edu-logo srm"
+                class="edu-logo"
               />
               <h4 class="edu-name">Sairam Matriculation Higher Secondary School</h4>
               <p class="edu-loc">Tamil Nadu, India</p>
-              <span class="pill pill-amber">H.S.C</span>
+              <span class="badge badge--amber">H.S.C</span>
             </div>
-            <div class="card edu-card">
+
+            <div class="edu-card">
               <div class="edu-label">College</div>
               <img
                 src="./IMG/VSB.webp"
@@ -158,22 +158,25 @@
                 height="110"
                 loading="lazy"
                 decoding="async"
-                class="edu-logo"
+                class="edu-logo edu-logo--sm"
               />
-              <h4 class="edu-name">V.S.B College of Engineering Technical Campus (Autonomous)</h4>
+              <h4 class="edu-name">V.S.B College of Engineering Technical Campus</h4>
+              <h4 class="edu-name">(Autonomous)</h4>
               <p class="edu-loc">Coimbatore, Tamil Nadu</p>
-              <span class="pill pill-violet">Final Year</span>
+              <span class="badge badge--violet">Final Year</span>
             </div>
           </div>
         </div>
       </section>
+
       <!-- ================= SKILLS ================= -->
-      <section id="skills" class="skills">
-        <div class="container center">
+      <section id="skills" class="section section--soft">
+        <div class="wrap skills-section">
           <span class="eyebrow">Skills</span>
           <h2 class="section-title">My Skills &amp; Technologies</h2>
-          <div class="marquee-wrap">
-            <div id="skillTrack" class="marquee">
+
+          <div class="skills-marquee">
+            <div id="skillTrack" class="skill-track">
               <div class="skill"><img src="./IMG/HTML.webp" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span></div>
               <div class="skill"><img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span></div>
               <div class="skill"><img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span></div>
@@ -188,101 +191,98 @@
           </div>
         </div>
       </section>
+
       <!-- ================= PROJECTS ================= -->
-      <section id="projects" class="projects">
-        <div class="container">
+      <section id="projects" class="section">
+        <div class="wrap">
           <div class="section-head">
             <span class="eyebrow">Projects</span>
             <h2 class="section-title">My Recent Projects</h2>
           </div>
-          <div class="grid-cards">
-            <article class="card project-card">
-              <div class="thumb">
+
+          <div class="card-grid">
+            <article class="item-card">
+              <div class="project-img">
                 <img src="./IMG/GREENDEN.webp" alt="Greenden plant store preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
               <div class="project-body">
                 <h3 class="project-title">Greenden – Plant Store</h3>
                 <div class="tags">
-                  <span class="tag tag-html">HTML</span>
-                  <span class="tag tag-tw">Tailwind CSS</span>
-                  <span class="tag tag-js">JavaScript</span>
+                  <span class="tag tag--orange">HTML</span>
+                  <span class="tag tag--sky">Tailwind CSS</span>
+                  <span class="tag tag--yellow">JavaScript</span>
                 </div>
                 <p class="project-desc">A responsive plant store website built using HTML, Tailwind CSS and JavaScript.</p>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="link-btn link-solid">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
-            <article class="card project-card">
-              <div class="thumb">
+
+            <article class="item-card">
+              <div class="project-img">
                 <img src="./IMG/UDEMY.webp" alt="Udemy clone preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
               <div class="project-body">
                 <h3 class="project-title">Udemy Clone</h3>
                 <div class="tags">
-                  <span class="tag tag-html">HTML</span>
-                  <span class="tag tag-css">CSS3</span>
-                  <span class="tag tag-js">JavaScript</span>
+                  <span class="tag tag--orange">HTML</span>
+                  <span class="tag tag--blue">CSS3</span>
+                  <span class="tag tag--yellow">JavaScript</span>
                 </div>
                 <p class="project-desc">A responsive Udemy clone built with HTML, CSS and JavaScript.</p>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="link-btn link-solid">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
-            <article class="card project-card span-wide">
-              <div class="thumb">
+
+            <article class="item-card card-wide">
+              <div class="project-img">
                 <img src="./IMG/SMART.webp" alt="Smart attendance system preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
               <div class="project-body">
                 <h3 class="project-title">Smart Attendance System</h3>
                 <div class="tags">
-                  <span class="tag tag-react">React</span>
-                  <span class="tag tag-node">Node.js</span>
-                  <span class="tag tag-express">Express.js</span>
-                  <span class="tag tag-mongo">MongoDB</span>
+                  <span class="tag tag--indigo">React</span>
+                  <span class="tag tag--green">Node.js</span>
+                  <span class="tag tag--gray">Express.js</span>
+                  <span class="tag tag--lime">MongoDB</span>
                 </div>
                 <p class="project-desc">A web application to manage student attendance with reports and notifications.</p>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="link-btn link-solid">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
-                  <a href="#" class="link-btn link-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
           </div>
         </div>
       </section>
+
       <!-- ================= CERTIFICATIONS ================= -->
-      <section id="certifications" class="certs">
-        <div class="container">
-          <div class="section-head">
+      <section id="certifications" class="section section--certs">
+        <div class="wrap">
+          <div class="section-head section-head--spaced">
             <span class="eyebrow">Certifications</span>
-            <h2 class="section-title">My Certifications &amp; Achievements</h2>
+            <h2 class="section-title section-title--sm">My Certifications &amp; Achievements</h2>
             <p class="section-sub">Professional certifications, internship experiences, and technical achievements.</p>
           </div>
-          <div class="grid-cards">
-            <!-- Certificate 1 -->
-            <article class="card cert-card">
-              <a
-                href="./IMG/WEB%20%20DEVELOPMENT.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View Web Development certificate"
-                class="cert-link"
-              >
+
+          <div class="card-grid">
+            <article class="item-card">
+              <a href="./IMG/WEB%20%20DEVELOPMENT.pdf" target="_blank" rel="noopener noreferrer" aria-label="View Web Development certificate" class="cert-media">
                 <img src="./IMG/webdevelopment.webp" alt="Web Development Certificate" loading="lazy" decoding="async" />
                 <div class="cert-overlay"></div>
-                <span class="cert-badge">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
-                </span>
+                <span class="cert-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential</span>
               </a>
               <div class="cert-body">
                 <div class="cert-meta">
@@ -291,54 +291,32 @@
                 </div>
                 <h3 class="cert-title">Web Development Certificate</h3>
                 <p class="cert-org">CodSoft</p>
-                <p class="cert-desc">
-                  Completed a one-month internship in Web Development, gaining
-                  practical experience in HTML, CSS, and JavaScript.
-                </p>
+                <p class="cert-text">Completed a one-month internship in Web Development, gaining practical experience in HTML, CSS, and JavaScript.</p>
               </div>
             </article>
-            <!-- Certificate 2 -->
-            <article class="card cert-card">
-              <a
-                href="./IMG/SQL.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View HackerRank SQL Advanced certificate"
-                class="cert-link"
-              >
+
+            <article class="item-card">
+              <a href="./IMG/SQL.pdf" target="_blank" rel="noopener noreferrer" aria-label="View HackerRank SQL Advanced certificate" class="cert-media">
                 <img src="./IMG/sql.webp" alt="HackerRank SQL Advanced Certificate" loading="lazy" decoding="async" />
                 <div class="cert-overlay"></div>
-                <span class="cert-badge">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
-                </span>
+                <span class="cert-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential</span>
               </a>
               <div class="cert-body">
                 <div class="cert-meta">
                   <span class="cert-cat">Database &amp; SQL</span>
                   <span class="cert-date">HackerRank</span>
                 </div>
-                <h3 class="cert-title">SQL (Intermediate) Certificate</h3>
+                <h3 class="cert-title">SQL(Intermediate)Certificate</h3>
                 <p class="cert-org">HackerRank</p>
-                <p class="cert-desc">
-                  Demonstrated SQL skills through advanced database challenges,
-                  including complex queries, joins, subqueries, and aggregation.
-                </p>
+                <p class="cert-text">Demonstrated SQL skills through advanced database challenges, including complex queries, joins, subqueries, and aggregation.</p>
               </div>
             </article>
-            <!-- Certificate 3 -->
-            <article class="card cert-card span-wide">
-              <a
-                href="./IMG/JAVA%20(BASIC).pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View HackerRank Java Basic certificate"
-                class="cert-link"
-              >
+
+            <article class="item-card card-wide">
+              <a href="./IMG/JAVA%20(BASIC).pdf" target="_blank" rel="noopener noreferrer" aria-label="View HackerRank Java Basic certificate" class="cert-media">
                 <img src="./IMG/java.webp" alt="HackerRank Java Basic Certificate" loading="lazy" decoding="async" />
                 <div class="cert-overlay"></div>
-                <span class="cert-badge">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential
-                </span>
+                <span class="cert-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click to view credential</span>
               </a>
               <div class="cert-body">
                 <div class="cert-meta">
@@ -347,179 +325,169 @@
                 </div>
                 <h3 class="cert-title">Java (Basic) Certificate</h3>
                 <p class="cert-org">HackerRank</p>
-                <p class="cert-desc">
-                  Demonstrated foundational Java programming skills, including
-                  data types, control flow, object-oriented programming basics,
-                  and problem-solving.
-                </p>
+                <p class="cert-text">Demonstrated foundational Java programming skills, including data types, control flow, object-oriented programming basics, and problem-solving.</p>
               </div>
             </article>
           </div>
         </div>
       </section>
+
       <!-- ================= JOURNEY ================= -->
-      <section id="journey" class="journey">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow journey-eyebrow">Journey</span>
-            <h2 class="section-title">My Learning Journey</h2>
+      <section id="journey" class="journey-section">
+        <div class="wrap">
+          <div class="section-head section-head--spaced">
+            <span class="eyebrow eyebrow--wide">Journey</span>
+            <h2 class="section-title section-title--sm">My Learning Journey</h2>
             <p class="section-sub">
               From school to full stack development – a journey of continuous
               learning, growth and building real-world skills.
             </p>
             <div class="divider" aria-hidden="true">
-              <span class="bar"></span>
-              <span class="dot"></span>
-              <span class="bar"></span>
+              <span class="divider-line"></span>
+              <span class="divider-dot"></span>
+              <span class="divider-line"></span>
             </div>
           </div>
-          <div class="timeline-wrap">
+
+          <div class="timeline">
             <div class="timeline-line" aria-hidden="true"></div>
-            <ol class="timeline">
+
+            <ol class="timeline-list">
               <!-- 01 : left -->
               <li class="tl-item tl-1">
                 <div class="tl-card">
-                  <div class="tl-logo">
-                    <img
-                      src="./IMG/SRM.webp"
-                      alt="Sairam Matriculation Higher Secondary School logo"
-                      width="140"
-                      height="140"
-                      loading="lazy"
-                      decoding="async"
-                      class="srm"
-                    />
+                  <div class="tl-logo tl-logo--srm">
+                    <img src="./IMG/SRM.webp" alt="Sairam Matriculation Higher Secondary School logo" width="140" height="110" loading="lazy" decoding="async" />
                   </div>
-                  <div class="tl-body">
-                    <span class="tl-num">01</span>
-                    <div class="tl-content">
-                      <div class="tl-date">2021 – 2023</div>
+                  <div class="tl-main">
+                    <span class="step-num">01</span>
+                    <div class="tl-body">
+                      <div class="tl-year">2021 – 2023</div>
                       <h4 class="tl-title">Higher Secondary Education</h4>
-                      <p class="tl-desc">Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.</p>
-                      <span class="tl-tag"><i class="fa-solid fa-building-columns"></i> School</span>
+                      <p class="tl-text">Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.</p>
+                      <span class="tl-pill"><i class="fa-solid fa-building-columns"></i> School</span>
                     </div>
                   </div>
                 </div>
-                <span class="tl-dot right" aria-hidden="true"></span>
+                <span class="tl-dot tl-dot--right" aria-hidden="true"></span>
               </li>
+
               <!-- 02 : right -->
               <li class="tl-item tl-2">
                 <div class="tl-card">
                   <div class="tl-logo">
-                    <img
-                      src="./IMG/VSB.webp"
-                      alt="V.S.B College of Engineering Technical Campus logo"
-                      width="128"
-                      height="128"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src="./IMG/VSB.webp" alt="V.S.B College of Engineering Technical Campus logo" width="128" height="128" loading="lazy" decoding="async" />
                   </div>
-                  <div class="tl-body">
-                    <span class="tl-num">02</span>
-                    <div class="tl-content">
-                      <div class="tl-date">2023 – 2027</div>
+                  <div class="tl-main">
+                    <span class="step-num">02</span>
+                    <div class="tl-body">
+                      <div class="tl-year">2023 – 2027</div>
                       <h4 class="tl-title">B.E Computer Science and Engineering</h4>
-                      <p class="tl-desc">V.S.B College of Engineering Technical Campus, Coimbatore.</p>
-                      <span class="tl-tag"><i class="fa-solid fa-graduation-cap"></i> College</span>
+                      <p class="tl-text">V.S.B College of Engineering Technical Campus, Coimbatore.</p>
+                      <span class="tl-pill"><i class="fa-solid fa-graduation-cap"></i> College</span>
                     </div>
                   </div>
                 </div>
-                <span class="tl-dot left" aria-hidden="true"></span>
+                <span class="tl-dot tl-dot--left" aria-hidden="true"></span>
               </li>
+
               <!-- 03 : left -->
               <li class="tl-item tl-3">
                 <div class="tl-card">
-                  <div class="tl-logo plain">
-                    <img
-                      src="./IMG/client-logo-2.webp"
-                      alt="MERN stack technologies"
-                      width="104"
-                      height="104"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                  <div class="tl-logo tl-logo--plain">
+                    <img src="./IMG/client-logo-2.webp" alt="MERN stack technologies" width="104" height="104" loading="lazy" decoding="async" />
                   </div>
-                  <div class="tl-body">
-                    <span class="tl-num">03</span>
-                    <div class="tl-content">
-                      <div class="tl-date">2026 – Present</div>
+                  <div class="tl-main">
+                    <span class="step-num">03</span>
+                    <div class="tl-body">
+                      <div class="tl-year">2026 – Present</div>
                       <h4 class="tl-title">Full Stack Development Journey</h4>
-                      <p class="tl-desc">
-                        Learning HTML, CSS, Tailwind CSS, JavaScript, React, NodeJs, ExpressJs, MongoDB and building real-world projects.
-                      </p>
-                      <span class="tl-tag"><i class="fa-solid fa-laptop"></i> Learning &amp; Building</span>
+                      <p class="tl-text">Learning HTML, CSS, Tailwind CSS, JavaScript, React, NodeJs, ExpressJs, MongoDB and building real-world projects.</p>
+                      <span class="tl-pill"><i class="fa-solid fa-laptop"></i> Learning &amp; Building</span>
                     </div>
                   </div>
                 </div>
-                <span class="tl-dot right" aria-hidden="true"></span>
+                <span class="tl-dot tl-dot--right" aria-hidden="true"></span>
               </li>
             </ol>
           </div>
         </div>
       </section>
+
       <!-- ================= CONTACT ================= -->
-      <section id="contact" class="contact">
-        <div class="container">
-          <div class="contact-box">
-            <div class="contact-blob" aria-hidden="true"></div>
+      <section id="contact" class="section section--soft">
+        <div class="wrap">
+          <div class="contact-card">
+            <div class="contact-glow" aria-hidden="true"></div>
+
             <!-- LEFT -->
             <div class="contact-left">
-              <div class="contact-eyebrow">
-                <span class="contact-tag">Contact</span>
-                <span class="line"></span>
+              <div class="eyebrow-row">
+                <span class="eyebrow">Contact</span>
+                <span class="rule"></span>
               </div>
               <h2 class="contact-title">Get in <span class="accent">Touch</span></h2>
               <p class="contact-text">
                 I'm always open to discussing new opportunities, interesting
                 projects or just having a conversation about technology.
               </p>
-              <div class="contact-info">
-                <div class="info-row">
-                  <div class="info-icon ic-red"><i class="fa-solid fa-envelope"></i></div>
+
+              <!-- Resume download -->
+              <a href="./resume/SANTHOSHRAJ_Resume.pdf" download class="btn btn-ghost contact-resume">
+                <i class="fa-solid fa-download"></i> Download Resume
+              </a>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <div class="contact-icon contact-icon--red"><i class="fa-solid fa-envelope"></i></div>
                   <div>
                     <strong>Email</strong>
-                    <span class="break">santhoshkathirkk@gmail.com</span>
+                    <span class="break-all">santhoshkathirkk@gmail.com</span>
                   </div>
                 </div>
-                <div class="info-row">
-                  <div class="info-icon ic-green"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-item">
+                  <div class="contact-icon contact-icon--green"><i class="fa-solid fa-phone"></i></div>
                   <div>
                     <strong>Phone</strong>
                     <span>+91 9342214070</span>
                   </div>
                 </div>
-                <div class="info-row">
-                  <div class="info-icon ic-rose"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="contact-item">
+                  <div class="contact-icon contact-icon--rose"><i class="fa-solid fa-location-dot"></i></div>
                   <div>
                     <strong>Location</strong>
                     <span>Coimbatore, Tamil Nadu, India</span>
                   </div>
                 </div>
               </div>
-              <hr class="contact-divider" />
+
+              <hr class="contact-hr" />
+
               <p class="connect-label">Connect With Me</p>
-              <div class="social-row left contact-social">
-                <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a class="li" href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a class="ig" href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <div class="socials socials--contact">
+                <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link social-link--linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link social-link--instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email" class="social-link"><i class="fa-solid fa-envelope"></i></a>
               </div>
+
               <div class="contact-deco" aria-hidden="true">
                 <div class="deco-circle"></div>
                 <i class="fa-solid fa-envelope-open-text deco-main"></i>
                 <i class="fa-solid fa-paper-plane deco-plane"></i>
               </div>
             </div>
+
             <!-- RIGHT : form -->
             <div class="form-card">
               <div class="form-head">
                 <div class="form-icon"><i class="fa-solid fa-comment-dots"></i></div>
                 <div>
-                  <h3>Send Me a Message</h3>
-                  <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+                  <h3 class="form-title">Send Me a Message</h3>
+                  <p class="form-sub">Fill out the form below and I'll get back to you as soon as possible.</p>
                 </div>
               </div>
+
               <form id="contactForm" class="contact-form">
                 <div class="form-row">
                   <div class="field-wrap">
@@ -536,10 +504,10 @@
                   <input type="text" id="subject" name="subject" aria-label="Subject" placeholder="Subject (Optional)" class="field" />
                 </div>
                 <div class="field-wrap">
-                  <i class="fa-regular fa-message field-icon top"></i>
-                  <textarea id="message" name="message" aria-label="Your message" placeholder="Your Message" required class="field"></textarea>
+                  <i class="fa-regular fa-message field-icon field-icon--top"></i>
+                  <textarea id="message" name="message" aria-label="Your message" placeholder="Your Message" required class="field field--area"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="btn-submit">
                   <i class="fa-solid fa-paper-plane"></i> Send Message
                 </button>
               </form>
@@ -548,18 +516,21 @@
         </div>
       </section>
     </main>
+
     <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <p class="copy">&copy; 2026 Santhoshraj. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <p class="copyright">&copy; 2026 Santhoshraj. All rights reserved.</p>
+
+        <div class="footer-socials">
+          <a href="https://github.com/SANTHOSH0530" target="_blank" rel="noopener" aria-label="GitHub" class="footer-link"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/santhoshrajk" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/_santhosh._k/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="mailto:santhoshkathirkk@gmail.com" aria-label="Email" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
