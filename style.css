@@ -164,6 +164,10 @@ main {
   scroll-margin-top: 7rem;
 }
 
+.section--tight-top {
+  padding-top: 0;
+}
+
 .section-head {
   text-align: center;
 }
@@ -216,6 +220,7 @@ main {
 .section-title--sm {
   margin-bottom: 0.75rem;
 }
+
 .section-sub {
   font-size: 0.875rem;
   color: var(--slate-500);
@@ -391,6 +396,7 @@ main {
 }
 
 .logo {
+  flex-shrink: 0;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -543,6 +549,23 @@ main {
   color: rgb(79 70 229 / 0.8);
   width: 1rem;
   text-align: center;
+}
+
+/* Tablet / small laptop: fit all nav items in one row */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .nav-links {
+    gap: 0.125rem;
+  }
+
+  .nav-a {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8125rem;
+    gap: 0;
+  }
+
+  .nav-a i {
+    display: none;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -877,10 +900,6 @@ main {
   .stat {
     text-align: left;
   }
-}
-
-.stat--divider {
-  /* must come after .stat so the sm: rules win */
 }
 
 @media (min-width: 640px) {

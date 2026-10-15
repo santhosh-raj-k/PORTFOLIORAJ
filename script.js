@@ -65,11 +65,9 @@ const io = new IntersectionObserver(
   },
   { rootMargin: "-40% 0px -55% 0px" }
 );
-document.querySelectorAll("section[id]").forEach((section) => {
-  sectionObserver.observe(section);
-});
+document.querySelectorAll("section[id]").forEach((s) => io.observe(s));
 
-// ===== Contact form -> mail app =====
+// ---------- Contact form -> opens mail app ----------
 document.getElementById("contactForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const name = document.getElementById("name").value;
@@ -83,5 +81,8 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
     message + "\n\nFrom: " + name + " (" + email + ")"
   );
   location.href =
-    "mailto:santhoshkathirkk@gmail.com?subject=" + subject + "&body=" + body;
+    "mailto:santhoshkathirkk@gmail.com?subject=" +
+    subject +
+    "&body=" +
+    body;
 });
