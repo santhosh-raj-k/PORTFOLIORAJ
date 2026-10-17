@@ -54,7 +54,7 @@
         </ul>
 
         <div class="header-actions">
-          <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <button id="menuBtn" class="menu-btn" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -78,7 +78,7 @@
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">View My Projects <i class="fa-solid fa-arrow-right"></i></a>
               <a href="#contact" class="btn btn-outline">Contact Me</a>
-              <a href="" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Download Resume</a>
+              <a href="./IMG/RESUME.pdf" download="Santhoshraj-Resume.pdf" class="btn btn-ghost"><i class="fa-solid fa-download"></i> Download Resume</a>
             </div>
 
             <div class="socials">
@@ -175,52 +175,76 @@
       </section>
 
       <!-- ================= SKILLS ================= -->
-      <section id="skills" class="section section--soft section--tight-top">
-        <div class="wrap skills-section">
-          <span class="eyebrow">Skills</span>
-          <h2 class="section-title">My Skills &amp; Technologies</h2>
-
-          <div class="skills-marquee">
-            <div id="skillTrack" class="skill-track">
-              <div class="skill"><img src="./IMG/HTML.webp" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span></div>
-              <div class="skill"><img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span></div>
-              <div class="skill"><img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span></div>
-              <div class="skill"><img src="./IMG/REACT.webp" alt="React" width="52" height="52" loading="lazy" decoding="async" /><span>React</span></div>
-              <div class="skill"><img src="./IMG/TAILWIND%20CSS.webp" alt="Tailwind CSS" width="52" height="52" loading="lazy" decoding="async" /><span>Tailwind CSS</span></div>
-              <div class="skill"><img src="./IMG/NODE%20JS.webp" alt="Node.js" width="52" height="52" loading="lazy" decoding="async" /><span>Node.js</span></div>
-              <div class="skill"><img src="./IMG/EXPRESSJS.webp" alt="Express.js" width="52" height="52" loading="lazy" decoding="async" /><span>Express.js</span></div>
-              <div class="skill"><img src="./IMG/MONGODB.webp" alt="MongoDB" width="52" height="52" loading="lazy" decoding="async" /><span>MongoDB</span></div>
-              <div class="skill"><img src="./IMG/GIT.webp" alt="Git" width="52" height="52" loading="lazy" decoding="async" /><span>Git</span></div>
-              <div class="skill"><img src="./IMG/GITHUB.webp" alt="GitHub" width="52" height="52" loading="lazy" decoding="async" /><span>GitHub</span></div>
-            </div>
+      <section id="skills" class="section section--soft">
+        <div class="wrap">
+          <div class="section-head section-head--spaced">
+            <span class="eyebrow">Skills &amp; Technologies</span>
+            <h2 class="section-title section-title--sm">My Skills &amp; Technologies</h2>
           </div>
+
+          <div class="skills-tabs" role="tablist">
+            <button class="skill-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="skill-tab" data-filter="frontend" role="tab" aria-selected="false">Frontend</button>
+            <button class="skill-tab" data-filter="backend" role="tab" aria-selected="false">Backend</button>
+            <button class="skill-tab" data-filter="database" role="tab" aria-selected="false">Database</button>
+            <button class="skill-tab" data-filter="tools" role="tab" aria-selected="false">Tools</button>
+          </div>
+        </div>
+
+        <!-- Marquee: full width, outside .wrap so it touches screen edges -->
+        <div class="skills-marquee">
+          <div id="skillTrack" class="skill-track">
+            <div class="skill" data-cat="frontend"><img src="./IMG/HTML.webp" alt="HTML" width="52" height="52" loading="lazy" decoding="async" /><span>HTML</span></div>
+            <div class="skill" data-cat="frontend"><img src="./IMG/CSS.webp" alt="CSS" width="52" height="52" loading="lazy" decoding="async" /><span>CSS3</span></div>
+            <div class="skill" data-cat="frontend"><img src="./IMG/JAVASCRIPT.webp" alt="JavaScript" width="52" height="52" loading="lazy" decoding="async" /><span>JavaScript</span></div>
+            <div class="skill" data-cat="frontend"><img src="./IMG/REACT.webp" alt="React" width="52" height="52" loading="lazy" decoding="async" /><span>React</span></div>
+            <div class="skill" data-cat="frontend"><img src="./IMG/TAILWIND%20CSS.webp" alt="Tailwind CSS" width="52" height="52" loading="lazy" decoding="async" /><span>Tailwind CSS</span></div>
+            <div class="skill" data-cat="backend"><img src="./IMG/NODE%20JS.webp" alt="Node.js" width="52" height="52" loading="lazy" decoding="async" /><span>Node.js</span></div>
+            <div class="skill" data-cat="backend"><img src="./IMG/EXPRESSJS.webp" alt="Express.js" width="52" height="52" loading="lazy" decoding="async" /><span>Express.js</span></div>
+            <div class="skill" data-cat="database"><img src="./IMG/MONGODB.webp" alt="MongoDB" width="52" height="52" loading="lazy" decoding="async" /><span>MongoDB</span></div>
+            <div class="skill" data-cat="tools"><img src="./IMG/GIT.webp" alt="Git" width="52" height="52" loading="lazy" decoding="async" /><span>Git</span></div>
+            <div class="skill" data-cat="tools"><img src="./IMG/GITHUB.webp" alt="GitHub" width="52" height="52" loading="lazy" decoding="async" /><span>GitHub</span></div>
+          </div>
+        </div>
+
+        <div class="wrap">
+          <p id="skillsEmpty" class="skills-empty">No skills in this category yet.</p>
         </div>
       </section>
 
       <!-- ================= PROJECTS ================= -->
       <section id="projects" class="section">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head section-head--spaced">
             <span class="eyebrow">Projects</span>
-            <h2 class="section-title">My Recent Projects</h2>
+            <h2 class="section-title section-title--sm">My Recent Projects</h2>
+            <p class="section-sub">A collection of projects I've built to apply my skills and solve real-world problems.</p>
           </div>
 
-          <div class="card-grid">
+          <div class="projects-grid">
             <article class="item-card">
+              <span class="project-badge">Featured</span>
               <div class="project-img">
                 <img src="./IMG/GREENDEN.webp" alt="Greenden plant store preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
               <div class="project-body">
-                <h3 class="project-title">Greenden – Plant Store</h3>
+                <h3 class="project-title">Greenden – Plant Store Website</h3>
                 <div class="tags">
                   <span class="tag tag--orange">HTML</span>
                   <span class="tag tag--sky">Tailwind CSS</span>
                   <span class="tag tag--yellow">JavaScript</span>
                 </div>
-                <p class="project-desc">A responsive plant store website built using HTML, Tailwind CSS and JavaScript.</p>
+                <p class="project-desc">A responsive plant store website with product listings, search, and contact section.</p>
+                <ul class="project-features">
+                  <li><i class="fa-solid fa-circle-check"></i> Responsive UI with modern design</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Product listings with images and details</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Search and filter functionality</li>
+                  <li><i class="fa-solid fa-circle-check"></i> About Us, Contact and Newsletter section</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Fully responsive for all devices</li>
+                </ul>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo →</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
                   <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
@@ -237,18 +261,27 @@
                   <span class="tag tag--orange">HTML</span>
                   <span class="tag tag--blue">CSS3</span>
                   <span class="tag tag--yellow">JavaScript</span>
+                  <span class="tag tag--sky">Tailwind CSS</span>
                 </div>
-                <p class="project-desc">A responsive Udemy clone built with HTML, CSS and JavaScript.</p>
+                <p class="project-desc">A responsive Udemy clone with modern UI, course sections and interactive design.</p>
+                <ul class="project-features">
+                  <li><i class="fa-solid fa-circle-check"></i> Responsive home page with hero section</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Course categories and course cards</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Search bar and filter (UI)</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Sign up / Login UI (Frontend)</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Modern and clean design using Tailwind CSS</li>
+                </ul>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo →</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
                   <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
               </div>
             </article>
 
-            <article class="item-card card-wide">
+            <article class="item-card">
+              <span class="project-badge project-badge--latest">Latest</span>
               <div class="project-img">
                 <img src="./IMG/SMART.webp" alt="Smart attendance system preview" width="400" height="190" loading="lazy" decoding="async" />
               </div>
@@ -259,11 +292,19 @@
                   <span class="tag tag--green">Node.js</span>
                   <span class="tag tag--gray">Express.js</span>
                   <span class="tag tag--lime">MongoDB</span>
+                  <span class="tag tag--pink">Chart.js</span>
                 </div>
                 <p class="project-desc">A web application to manage student attendance with reports and notifications.</p>
+                <ul class="project-features">
+                  <li><i class="fa-solid fa-circle-check"></i> Student attendance tracking (In/Out)</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Dashboard with charts and reports</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Absentee notification (Email / WhatsApp)</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Monthly Excel report generation</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Responsive design for admin and students</li>
+                </ul>
                 <div class="project-links">
                   <!-- TODO: replace # with the live demo URL -->
-                  <a href="#" class="btn-block btn-block--primary">Live Demo</a>
+                  <a href="#" class="btn-block btn-block--primary">Live Demo →</a>
                   <!-- TODO: replace # with the GitHub repo URL -->
                   <a href="#" class="btn-block btn-block--outline"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
@@ -274,7 +315,7 @@
       </section>
 
       <!-- ================= CERTIFICATIONS ================= -->
-      <section id="certifications" class="section section--certs section--tight-top">
+      <section id="certifications" class="section section--soft">
         <div class="wrap">
           <div class="section-head section-head--spaced">
             <span class="eyebrow">Certifications</span>
@@ -311,13 +352,13 @@
                   <span class="cert-cat">Database &amp; SQL</span>
                   <span class="cert-date">HackerRank</span>
                 </div>
-                <h3 class="cert-title">SQL(Intermediate)Certificate</h3>
+                <h3 class="cert-title">SQL (Intermediate) Certificate</h3>
                 <p class="cert-org">HackerRank</p>
                 <p class="cert-text">Demonstrated SQL skills through advanced database challenges, including complex queries, joins, subqueries, and aggregation.</p>
               </div>
             </article>
 
-            <article class="item-card card-wide">
+            <article class="item-card">
               <a href="./IMG/JAVA%20(BASIC).pdf" target="_blank" rel="noopener noreferrer" aria-label="View HackerRank Java Basic certificate" class="cert-media">
                 <img src="./IMG/java.webp" alt="HackerRank Java Basic Certificate" loading="lazy" decoding="async" />
                 <div class="cert-overlay"></div>
@@ -338,15 +379,12 @@
       </section>
 
       <!-- ================= JOURNEY ================= -->
-      <section id="journey" class="journey-section">
+      <section id="journey" class="section">
         <div class="wrap">
           <div class="section-head section-head--spaced">
-            <span class="eyebrow eyebrow--wide">Journey</span>
-            <h2 class="section-title section-title--sm">My Learning Journey</h2>
-            <p class="section-sub">
-              From school to full stack development – a journey of continuous
-              learning, growth and building real-world skills.
-            </p>
+            <span class="eyebrow">My Journey</span>
+            <h2 class="section-title section-title--sm">Education &amp; Learning</h2>
+            <p class="section-sub">My academic background and development journey.</p>
             <div class="divider" aria-hidden="true">
               <span class="divider-line"></span>
               <span class="divider-dot"></span>
@@ -354,68 +392,46 @@
             </div>
           </div>
 
-          <div class="timeline">
-            <div class="timeline-line" aria-hidden="true"></div>
+          <ol class="journey-list">
+            <li class="journey-card">
+              <div class="journey-num">01</div>
+              <div class="journey-info">
+                <div class="journey-year">2021 – 2023</div>
+                <h3 class="journey-title">Higher Secondary Education</h3>
+                <p class="journey-text">Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.</p>
+                <span class="journey-pill"><i class="fa-solid fa-building-columns"></i> School</span>
+              </div>
+              <div class="journey-logo">
+                <img src="./IMG/SRM.webp" alt="Sairam Matriculation Higher Secondary School logo" width="140" height="110" loading="lazy" decoding="async" />
+              </div>
+            </li>
 
-            <ol class="timeline-list">
-              <!-- 01 : left -->
-              <li class="tl-item tl-1">
-                <div class="tl-card">
-                  <div class="tl-logo tl-logo--srm">
-                    <img src="./IMG/SRM.webp" alt="Sairam Matriculation Higher Secondary School logo" width="140" height="110" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="tl-main">
-                    <span class="step-num">01</span>
-                    <div class="tl-body">
-                      <div class="tl-year">2021 – 2023</div>
-                      <h4 class="tl-title">Higher Secondary Education</h4>
-                      <p class="tl-text">Sairam Matriculation Higher Secondary School, Thiruthuraipoondi, Tamil Nadu.</p>
-                      <span class="tl-pill"><i class="fa-solid fa-building-columns"></i> School</span>
-                    </div>
-                  </div>
-                </div>
-                <span class="tl-dot tl-dot--right" aria-hidden="true"></span>
-              </li>
+            <li class="journey-card">
+              <div class="journey-num">02</div>
+              <div class="journey-info">
+                <div class="journey-year">2023 – 2027</div>
+                <h3 class="journey-title">B.E Computer Science and Engineering</h3>
+                <p class="journey-text">V.S.B College of Engineering Technical Campus, Coimbatore.</p>
+                <span class="journey-pill"><i class="fa-solid fa-graduation-cap"></i> College</span>
+              </div>
+              <div class="journey-logo">
+                <img src="./IMG/VSB.webp" alt="V.S.B College of Engineering Technical Campus logo" width="128" height="128" loading="lazy" decoding="async" />
+              </div>
+            </li>
 
-              <!-- 02 : right -->
-              <li class="tl-item tl-2">
-                <div class="tl-card">
-                  <div class="tl-logo">
-                    <img src="./IMG/VSB.webp" alt="V.S.B College of Engineering Technical Campus logo" width="128" height="128" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="tl-main">
-                    <span class="step-num">02</span>
-                    <div class="tl-body">
-                      <div class="tl-year">2023 – 2027</div>
-                      <h4 class="tl-title">B.E Computer Science and Engineering</h4>
-                      <p class="tl-text">V.S.B College of Engineering Technical Campus, Coimbatore.</p>
-                      <span class="tl-pill"><i class="fa-solid fa-graduation-cap"></i> College</span>
-                    </div>
-                  </div>
-                </div>
-                <span class="tl-dot tl-dot--left" aria-hidden="true"></span>
-              </li>
-
-              <!-- 03 : left -->
-              <li class="tl-item tl-3">
-                <div class="tl-card">
-                  <div class="tl-logo tl-logo--plain">
-                    <img src="./IMG/client-logo-2.webp" alt="MERN stack technologies" width="104" height="104" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="tl-main">
-                    <span class="step-num">03</span>
-                    <div class="tl-body">
-                      <div class="tl-year">2026 – Present</div>
-                      <h4 class="tl-title">Full Stack Development Journey</h4>
-                      <p class="tl-text">Learning HTML, CSS, Tailwind CSS, JavaScript, React, NodeJs, ExpressJs, MongoDB and building real-world projects.</p>
-                      <span class="tl-pill"><i class="fa-solid fa-laptop"></i> Learning &amp; Building</span>
-                    </div>
-                  </div>
-                </div>
-                <span class="tl-dot tl-dot--right" aria-hidden="true"></span>
-              </li>
-            </ol>
-          </div>
+            <li class="journey-card">
+              <div class="journey-num">03</div>
+              <div class="journey-info">
+                <div class="journey-year">2026 – Present</div>
+                <h3 class="journey-title">Full Stack Development Journey</h3>
+                <p class="journey-text">Learning HTML, CSS, Tailwind CSS, JavaScript, React, Node.js, Express.js, MongoDB and building real-world projects.</p>
+                <span class="journey-pill"><i class="fa-solid fa-laptop"></i> Learning &amp; Building</span>
+              </div>
+              <div class="journey-logo">
+                <img src="./IMG/client-logo-2.webp" alt="MERN stack technologies" width="104" height="104" loading="lazy" decoding="async" />
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -437,8 +453,7 @@
                 projects or just having a conversation about technology.
               </p>
 
-              <!-- Resume download -->
-              <a href="" download class="btn btn-ghost contact-resume">
+              <a href="./IMG/RESUME.pdf" download="Santhoshraj-Resume.pdf" class="btn btn-ghost contact-resume">
                 <i class="fa-solid fa-download"></i> Download Resume
               </a>
 

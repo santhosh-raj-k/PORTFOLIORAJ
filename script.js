@@ -35,19 +35,44 @@ addEventListener("resize", () => {
   setMenu(false);
 });
 
-// ---------- Seamless skills marquee ----------
-const track = document.getElementById("skillTrack");
-[...track.children].forEach((el) => {
-  const c = el.cloneNode(true);
-  c.setAttribute("aria-hidden", "true");
-  c.querySelector("img").alt = "";
-  track.appendChild(c);
+// ---------- Skills marquee (clone for seamless loop) ----------
+const skillTrack = document.getElementById("skillTrack");
+[...skillTrack.children].forEach((el) => {
+  const clone = el.cloneNode(true);
+  clone.classList.add("is-clone");
+  clone.setAttribute("aria-hidden", "true");
+  clone.querySelector("img").alt = "";
+  skillTrack.appendChild(clone);
 });
 
-// Pause marquee when off-screen
-new IntersectionObserver(([e]) => {
-  track.style.animationPlayState = e.isIntersecting ? "" : "paused";
-}).observe(track);
+// ---------- Skills filter tabs ----------
+const skillTabs = document.querySelectorAll(".skill-tab");
+const skillItems = skillTrack.querySelectorAll(".skill");
+const skillsEmpty = document.getElementById("skillsEmpty");
+
+skillTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const filter = tab.dataset.filter;
+
+    skillTabs.forEach((t) => {
+      const isActive = t === tab;
+      t.classList.toggle("active", isActive);
+      t.setAttribute("aria-selected", isActive);
+    });
+
+    // "All" = marquee odum, other filters = marquee nirutthi wrapped grid
+    skillTrack.classList.toggle("is-static", filter !== "all");
+
+    let visibleCount = 0;
+    skillItems.forEach((item) => {
+      const show = filter === "all" || item.dataset.cat === filter;
+      item.classList.toggle("is-hidden", !show);
+      if (show) visibleCount++;
+    });
+
+    skillsEmpty.style.display = visibleCount ? "none" : "block";
+  });
+});
 
 // ---------- Active nav link ----------
 const anchors = [...navLinks.querySelectorAll("a.nav-a")];
